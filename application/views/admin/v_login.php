@@ -52,6 +52,9 @@
             </div>
         </form>
 
+        <div style="margin-top: 15px; text-align: center;">
+            <p>Belum punya akun? <a href="<?php echo site_url('admin/login/register');?>">Daftar di sini</a></p>
+        </div>
 
         <!-- /.social-auth-links -->
         <hr/>

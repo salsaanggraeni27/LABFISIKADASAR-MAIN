@@ -2,6 +2,9 @@
 class Kelprak extends CI_Controller{
 	function __construct(){
 		parent::__construct();
+		if ($this->session->userdata('masuk') != TRUE) {
+			redirect('administrator');
+		}
         $this->load->model('m_siswa');
         $this->load->model('m_kelas');
 		$this->load->model('m_pengunjung');

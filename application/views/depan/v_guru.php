@@ -64,40 +64,58 @@
                     </button>
                     <a href="<?php echo site_url('');?>" class="navbar-brand nav-brand2"><img class="img img-responsive" width="250px;" src="<?php echo base_url().'theme/images/logo-biru.png'?>"></a>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
+                                                                        <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo site_url('home');?>"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
                             </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url('asisten');?>"><i class="fa fa-users" aria-hidden="true"></i>  Asisten</a>
-                            </li>
-                            <div class="dropdown">
+                            
+                            <?php if($this->session->userdata('masuk') == TRUE): ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-flask" aria-hidden="true"></i>  Praktikum</a>
-                                    <div class="dropdown-content">
-                                        <a href="<?php echo site_url('blog/kategori/Peraturan');?>">Peraturan Praktikum</a>
-                                        <a href="<?php echo site_url('kelprak');?>">Kelompok Praktikum</a>
-                                        <a href="<?php echo site_url('jadwal');?>">Jadwal Praktikum</a>
-                                        <a href="<?php echo site_url('nilai');?>">Nilai Praktikum</a>
-                                        <a href="<?php echo site_url('modul');?>">Modul Praktikum</a>
-                                        <a href="<?php echo site_url('perizinan');?>">Perizinan Praktikum</a>
-                                    </div>
+                                    <a class="nav-link" href="<?php echo site_url('asisten');?>"><i class="fa fa-users" aria-hidden="true"></i>  Asisten</a>
                                 </li>
-                            </div>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url('blog/kategori/Info-Praktikum');?>"><i class="fa fa-rss-square" aria-hidden="true"></i>  Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url('pengumuman');?>"><i class="fa fa-bullhorn" aria-hidden="true"></i>  Pengumuman</a>
-                            </li>
+                                <div class="dropdown">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fa fa-flask" aria-hidden="true"></i>  Praktikum</a>
+                                        <div class="dropdown-content">
+                                            <a href="<?php echo site_url('blog/kategori/Peraturan');?>">Peraturan Praktikum</a>
+                                            <a href="<?php echo site_url('kelprak');?>">Kelompok Praktikum</a>
+                                            <a href="<?php echo site_url('jadwal');?>">Jadwal Praktikum</a>
+                                            <a href="<?php echo site_url('nilai');?>">Nilai Praktikum</a>
+                                            <a href="<?php echo site_url('modul');?>">Modul Praktikum</a>
+                                            <a href="<?php echo site_url('perizinan');?>">Perizinan Praktikum</a>
+                                        </div>
+                                    </li>
+                                </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('blog/kategori/Info-Praktikum');?>"><i class="fa fa-rss-square" aria-hidden="true"></i>  Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('pengumuman');?>"><i class="fa fa-bullhorn" aria-hidden="true"></i>  Pengumuman</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('download');?>"><i class="fa fa-download" aria-hidden="true"></i>  Download</a>
+                                </li>
+                            <?php endif; ?>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo site_url('download');?>"><i class="fa fa-download" aria-hidden="true"></i>  Download</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo site_url('contact');?>"><i class="fa fa-phone" aria-hidden="true"></i>  Contact</a>
                             </li>
+
+                            <?php if($this->session->userdata('masuk') == TRUE): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.instagram.com/labfisdasitenas?igsh=MWJqZXE3NXNnem84dQ==" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>  Instagram</a>
+                                </li>
+                            <?php endif; ?>
+
+                            <?php if($this->session->userdata('masuk') == TRUE): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/login/logout');?>"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout (<?php echo $this->session->userdata('nama');?>)</a>
+                                </li>
+                            <?php else: ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('administrator');?>"><i class="fa fa-sign-in" aria-hidden="true"></i>  Login</a>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </nav>

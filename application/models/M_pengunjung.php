@@ -2,7 +2,7 @@
 class M_pengunjung extends CI_Model{
 
 	function statistik_pengujung(){
-        $query = $this->db->query("SELECT DATE_FORMAT(pengunjung_tanggal,'%d') AS tgl,COUNT(pengunjung_ip) AS jumlah FROM tbl_pengunjung WHERE MONTH(pengunjung_tanggal)=MONTH(CURDATE()) GROUP BY DATE(pengunjung_tanggal)");
+        $query = $this->db->query("SELECT DATE_FORMAT(pengunjung_tanggal,'%d') AS tgl,COUNT(pengunjung_ip) AS jumlah FROM tbl_pengunjung WHERE MONTH(pengunjung_tanggal)=MONTH(CURDATE()) GROUP BY DATE_FORMAT(pengunjung_tanggal,'%d')");
 
         if($query->num_rows() > 0){
             foreach($query->result() as $data){
@@ -13,7 +13,7 @@ class M_pengunjung extends CI_Model{
     }
 
     function visitor_this_year(){
-        $query = $this->db->query("SELECT DATE_FORMAT(pengunjung_tanggal,'%M') AS bulan,COUNT(pengunjung_ip) AS jumlah FROM tbl_pengunjung WHERE YEAR(pengunjung_tanggal)=YEAR(CURDATE()) GROUP BY MONTH(pengunjung_tanggal)");
+        $query = $this->db->query("SELECT DATE_FORMAT(pengunjung_tanggal,'%M') AS bulan,COUNT(pengunjung_ip) AS jumlah FROM tbl_pengunjung WHERE YEAR(pengunjung_tanggal)=YEAR(CURDATE()) GROUP BY DATE_FORMAT(pengunjung_tanggal,'%M'), MONTH(pengunjung_tanggal) ORDER BY MONTH(pengunjung_tanggal) ASC");
 
         if($query->num_rows() > 0){
             foreach($query->result() as $data){
