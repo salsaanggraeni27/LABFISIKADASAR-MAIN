@@ -118,9 +118,24 @@
                             <?php endif; ?>
 
                             <?php if($this->session->userdata('masuk') == TRUE): ?>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('admin/login/logout');?>"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout (<?php echo $this->session->userdata('nama');?>)</a>
-                                </li>
+                                <div class="dropdown">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true"></i>  Akun</a>
+                                        <div class="dropdown-content" style="min-width: 240px; padding: 15px; border-radius: 6px; text-align: left; box-shadow: 0px 8px 24px rgba(0,0,0,0.15); border: 1px solid #e0e0e0; right: 0; background-color: #ffffff; z-index: 1000;">
+                                            <div style="font-size: 13px; color: #666; margin-bottom: 3px;">Nama:</div>
+                                            <div style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 10px; word-wrap: break-word;"><?php echo $this->session->userdata('nama');?></div>
+                                            
+                                            <div style="font-size: 13px; color: #666; margin-bottom: 3px;">Username:</div>
+                                            <div style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 10px; word-wrap: break-word;"><?php echo $this->session->userdata('user');?></div>
+                                            
+                                            <div style="font-size: 13px; color: #666; margin-bottom: 3px;">Sandi:</div>
+                                            <div style="font-size: 14px; font-weight: bold; color: #333; margin-bottom: 15px;">••••••••</div>
+                                            
+                                            <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
+                                            <a href="<?php echo site_url('admin/login/logout');?>" style="color: #d9534f !important; padding: 8px 12px !important; display: block; font-size: 14px; font-weight: bold; text-align: center; background-color: #fdf2f2; border-radius: 4px; border: 1px solid #f5c2c2; text-decoration: none;"><i class="fa fa-sign-out" aria-hidden="true"></i>  Logout</a>
+                                        </div>
+                                    </li>
+                                </div>
                             <?php else: ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo site_url('administrator');?>"><i class="fa fa-sign-in" aria-hidden="true"></i>  Login</a>
