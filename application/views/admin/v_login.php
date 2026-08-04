@@ -15,10 +15,17 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/AdminLTE.min.css'?>">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/iCheck/square/blue.css'?>">
+    <!-- Custom Login Theme -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/login-custom.css'?>">
 
 
 </head>
 <body class="hold-transition login-page">
+
+<a href="javascript:void(0)" onclick="history.back()" class="btn-back-page">
+    <i class="fa fa-arrow-left"></i> Kembali
+</a>
+
 <div class="login-box">
     <div>
         <p><?php echo $this->session->flashdata('msg');?></p>

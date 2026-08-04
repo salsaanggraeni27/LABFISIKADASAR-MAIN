@@ -1,0 +1,226 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body.login-page {
+    background: #ffffff !important;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ===== SISI KIRI (gambar) ===== */
+.register-split-left {
+    width: 45%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.register-split-left img {
+    width: 90%;
+    max-width: 640px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== SISI KANAN (background biru penuh + form, muat 1 layar) ===== */
+.login-box {
+    width: 55%;
+    margin: 0 0 0 45% !important;
+    height: 100vh;
+    background: linear-gradient(135deg, #0a1e4d 0%, #14275c 50%, #0d1f4a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 70px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.login-box::after {
+    content: '';
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: 50%;
+    bottom: -200px;
+    right: -200px;
+    pointer-events: none;
+}
+
+.login-box-body {
+    background: transparent !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: none !important;
+    position: relative;
+    z-index: 2;
+}
+
+.login-box-msg {
+    display: none;
+}
+
+.login-box-body h4 {
+    text-align: left;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 19px;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+}
+
+.login-box-body hr {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin: 6px 0 16px 0;
+}
+
+.login-box-body .form-group {
+    margin-bottom: 16px;
+}
+
+.login-box-body label {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.login-box-body .radio-inline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+}
+
+.login-box-body .form-control {
+    border-radius: 8px !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    background: rgba(255,255,255,0.95) !important;
+    height: 38px !important;
+    font-size: 13.5px;
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-box-body .form-control:focus {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.25) !important;
+}
+
+.login-box-body .form-control-feedback {
+    color: #14275c !important;
+    top: 0;
+    right: 8px;
+    line-height: 38px;
+}
+
+.login-box-body .btn-primary.btn-flat {
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #0d1f4a !important;
+    border-radius: 8px !important;
+    height: 40px !important;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+}
+
+.login-box-body .btn-primary.btn-flat:hover,
+.login-box-body .btn-primary.btn-flat:focus {
+    background: #e8ebf1 !important;
+    border-color: #e8ebf1 !important;
+    color: #0d1f4a !important;
+}
+
+.login-box-body a {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.login-box-body a:hover {
+    color: #dbe2f0;
+}
+
+.login-box-body > div[style*="text-align: center"] {
+    margin-top: 10px !important;
+}
+.login-box-body > div[style*="text-align: center"] p {
+    color: rgba(255,255,255,0.85);
+    font-size: 12.5px;
+    margin: 0;
+}
+
+.login-box-body p:last-child {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 8px;
+}
+
+/* ===== RESPONSIVE: stack di layar kecil, boleh scroll ===== */
+@media (max-width: 900px) {
+    html, body {
+        overflow: auto;
+    }
+    .register-split-left {
+        display: none;
+    }
+    .login-box {
+        width: 100%;
+        margin: 0 !important;
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+        padding: 40px 30px;
+        overflow: visible;
+    }
+}
+
+.btn-back-page {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff !important;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none !important;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: background 0.2s ease;
+}
+
+.btn-back-page:hover {
+    background: rgba(255, 255, 255, 0.28);
+    color: #ffffff !important;
+}
+
+.btn-back-page i {
+    margin-right: 6px;
+}

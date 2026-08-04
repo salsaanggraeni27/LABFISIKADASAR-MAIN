@@ -15,15 +15,28 @@
     <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/AdminLTE.min.css'?>">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/iCheck/square/blue.css'?>">
+    <!-- Custom Register Theme -->
+    <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/register-custom.css'?>">
+    
 </head>
 <body class="hold-transition login-page">
+
+<a href="javascript:void(0)" onclick="history.back()" class="btn-back-page">
+    <i class="fa fa-arrow-left"></i> Kembali
+</a>
+
+<!-- SISI KIRI -->
+<div class="register-split-left" style="background-image: url('<?php echo base_url().'tema/images/image_42.png'; ?>');">
+    <img src="<?php echo base_url().'tema/images/logo-fisdas.png'?>">
+</div>
+
+<!-- SISI KANAN (FORM) -->
 <div class="login-box" style="margin: 3% auto;">
     <div>
         <p><?php echo $this->session->flashdata('msg');?></p>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg"> <img width="250px;" height="60px" src="<?php echo base_url().'assets/images/logo-biru.png'?>"></p>
         <h4 class="text-center" style="margin-bottom: 20px;">Registrasi Akun Baru</h4>
         <hr/>
 
