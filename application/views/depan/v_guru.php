@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 
     <!-- Google Font for Asisten Page -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,27 +29,8 @@
     <style>
         /* ===== Asisten Section Title ===== */
         .our-teachers {
-            padding: 70px 0 80px !important;
+            padding: 40px 0 80px !important;
             background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
-        }
-        .our-teachers h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            font-size: 26px !important;
-            font-weight: 800 !important;
-            color: #0f172a !important;
-            text-align: center;
-            letter-spacing: 1px;
-            position: relative;
-            padding-bottom: 18px;
-        }
-        .our-teachers h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #f97316, #fb923c);
-            margin: 14px auto 0;
-            border-radius: 10px;
         }
 
         /* ===== Card Container ===== */
@@ -195,7 +177,7 @@
             <div class="col-xs-6 col-sm-8 col-md-9">
                 <div class="header-top_address">
                     <div class="header-top_list">
-                        Halaman Asisten Laboratorium FIsika Dasar Itenas 2021/2022
+                        Halaman Asisten Laboratorium Fisika Dasar ITENAS
                     </div>
                 </div>
             </div>
@@ -288,33 +270,18 @@
         </div>
     </div>
 </div>
-<section>
-    <div class="slider_img layout_two">
-        <div id="carousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/asisten-fisdas.png'?>" alt="First slide">
-                    <div class="carousel-caption d-md-block">
-                        <div class="slider_title">
-                            <h1>PROFIL ASISTEN</h1>
-                            <h2>LABORATORIUM FISIKA DASAR ITENAS</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!--//END HEADER -->
 
 <section class="our-teachers">
     <div class="container">
+        <!-- Hero Banner Card -->
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-5">ASISTEN LAB. FISIKA DASAR 2022/2023</h2>
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-users"></i> Profil Asisten</span>
+                    <h2>Profil Asisten Laboratorium</h2>
+                    <p>Daftar dan profil tim asisten Laboratorium Fisika Dasar ITENAS.</p>
+                </div>
             </div>
         </div>
         <div class="row">

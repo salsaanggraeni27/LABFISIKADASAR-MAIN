@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 
     <style>
         .bingkai {
@@ -145,11 +146,16 @@
 </div>
 <!--//END HEADER -->
 
-<section class="our-teachers">
+<section class="our-teachers" style="padding: 40px 0 80px;">
     <div class="container">
+        <!-- Hero Banner Card -->
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-5">DETAIL DATA ASISTEN LAB. FISIKA DASAR 2021/2022</h2>
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-user"></i> Detail Asisten</span>
+                    <h2>Detail Data Asisten</h2>
+                    <p>Informasi profil lengkap asisten Laboratorium Fisika Dasar ITENAS.</p>
+                </div>
             </div>
         </div>
         <div class="row">

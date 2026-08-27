@@ -20,6 +20,7 @@
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
     <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 
 </head>
 
@@ -131,43 +132,28 @@
         </div>
     </div>
 </div>
-<section>
-    <div class="slider_img layout_two">
-        <div id="carousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/bg-kelompok.png'?>" alt="First slide">
-                    <div class="carousel-caption d-md-block">
-                        <div class="slider_title">
-                            <h1>KELOMPOK PRAKTIKUM</h1>
-                            <h2>LABORATORIUM FISIKA DASAR ITENAS</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!--//END HEADER -->
-<section class="contact" style="margin-bottom:50px;">
+
+<section class="contact" style="padding-bottom: 80px;">
     <div class="container">
+        <!-- Hero Banner -->
         <div class="row">
             <div class="col-md-12">
-                <div class="contact-title">
-                    <h2>Kelompok Praktikum Fisika Dasar 2022/2023 </h2>
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-users"></i> Akademik & Praktikum</span>
+                    <h2>Kelompok Praktikum</h2>
+                    <p>Daftar alokasi kelompok kecil dan kelompok besar praktikan Laboratorium Fisika Dasar Itenas.</p>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-striped" id="example1">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <th>No.</th>
                             <th>NRP</th>
                             <th>Nama Praktikan</th>
                             <th>Jurusan</th>
@@ -181,17 +167,16 @@
                         <?php
                         $no=1;
                         foreach ($data->result() as $row):
-
                             ?>
                             <tr>
                                 <td><?php echo $no++;?></td>
-                                <td><?php echo $row->siswa_nis;?></td>
+                                <td><strong><?php echo $row->siswa_nis;?></strong></td>
                                 <td><?php echo $row->siswa_nama;?></td>
-                                <td><?php echo $row->siswa_jurusan;?></td>
-                                <td><?php echo $row->siswa_kelompok;?></td>
-                                <td><?php echo $row->siswa_kelompok_besar;?></td>
+                                <td><span class="badge badge-light" style="font-weight: 600; color: #475569; border: 1px solid #cbd5e1;"><?php echo $row->siswa_jurusan;?></span></td>
+                                <td><span class="badge-status badge-status-menunggu"><?php echo $row->siswa_kelompok;?></span></td>
+                                <td><span class="badge-status badge-status-selesai"><?php echo $row->siswa_kelompok_besar;?></span></td>
                                 <td><?php echo $row->kelas_siswa;?></td>
-                                <td><?php echo $row->harijam_siswa;?></td>
+                                <td><small class="text-muted"><i class="fa fa-clock-o"></i> <?php echo $row->harijam_siswa;?></small></td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>

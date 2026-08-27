@@ -21,6 +21,7 @@
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
     <style>
         .keterangan{
             color: #FFFFFF;
@@ -137,24 +138,30 @@
     </div>
 </div>
 <!--//END HEADER -->
-<section class="contact">
+
+<section class="contact" style="padding-bottom: 80px;">
     <div class="container">
+        <!-- Hero Banner -->
         <div class="row">
             <div class="col-md-12">
-                <div class="contact-title">
-                    <h2>Halaman Perizinan Praktikum</h2>
-                    <br>
-                    <h3 align="center" class="bold">Data Perizinan</h3>
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-envelope-o"></i> Administrasi Praktikan</span>
+                    <h2>Perizinan & Susulan Praktikum</h2>
+                    <p>Pengajuan surat izin ketidakhadiran praktikum dan informasi pelaksanaan praktikum susulan.</p>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
-                <div class="table-responsive">
+                <div class="section-title-modern">
+                    <h3><i class="fa fa-file-text-o"></i> Data Perizinan Praktikum</h3>
+                </div>
+                <div class="table-responsive mb-5">
                     <table class="table table-striped" id="example1">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <th>No.</th>
                             <th>Nama</th>
                             <th>NRP</th>
                             <th>Jurusan</th>
@@ -171,19 +178,19 @@
                             ?>
                             <tr>
                                 <td><?php echo $no++;?></td>
-                                <td><?php echo $row->nama;?></td>
+                                <td><strong><?php echo $row->nama;?></strong></td>
                                 <td><?php echo $row->nrp;?></td>
-                                <td><?php echo $row->jurusan;?></td>
+                                <td><span class="badge badge-light" style="font-weight: 600; color: #475569; border: 1px solid #cbd5e1;"><?php echo $row->jurusan;?></span></td>
                                 <td><?php echo $row->modul;?></td>
-                                <td><?php echo $row->tanggal;?></td>
+                                <td><small class="text-muted"><i class="fa fa-calendar"></i> <?php echo $row->tanggal;?></small></td>
                                 <td><?php echo $row->shift;?></td>
                                 <td><?php if ($row->perizinan_status==0)
                                     {
-                                        echo "Belum Dilihat";
+                                        echo "<span class='badge-status badge-status-dipinjam'><i class='fa fa-clock-o'></i> Belum Dilihat</span>";
                                     }elseif($row->perizinan_status==1){
-                                        echo "Approved";
+                                        echo "<span class='badge-status badge-status-selesai'><i class='fa fa-check-circle'></i> Approved</span>";
                                     }else{
-                                        echo "Ditolak";
+                                        echo "<span class='badge-status' style='background: #fef2f2; color: #dc2626; border: 1px solid #fecaca;'><i class='fa fa-times-circle'></i> Ditolak</span>";
                                     }
                                     ?></td>
                             </tr>
@@ -193,16 +200,17 @@
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <h3 align="center" class="bold">Data Susulan Praktikum</h3>
-        <div class="row">
+
+        <div class="row mt-4">
             <div class="col-md-12">
-                <div class="table-responsive">
+                <div class="section-title-modern">
+                    <h3><i class="fa fa-refresh"></i> Data Susulan Praktikum</h3>
+                </div>
+                <div class="table-responsive mb-5">
                     <table class="table table-striped" id="example2">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <th>No.</th>
                             <th>Nama</th>
                             <th>NRP</th>
                             <th>Jurusan</th>
@@ -219,14 +227,13 @@
                             ?>
                             <tr>
                                 <td><?php echo $no++;?></td>
-                                <td><?php echo $row->nama;?></td>
+                                <td><strong><?php echo $row->nama;?></strong></td>
                                 <td><?php echo $row->nrp;?></td>
-                                <td><?php echo $row->jurusan;?></td>
-                                <td><?php echo $row->kelompok;?></td>
+                                <td><span class="badge badge-light" style="font-weight: 600; color: #475569; border: 1px solid #cbd5e1;"><?php echo $row->jurusan;?></span></td>
+                                <td><span class="badge-status badge-status-menunggu"><?php echo $row->kelompok;?></span></td>
                                 <td><?php echo $row->modul;?></td>
-                                <td><?php echo $row->haritanggal;?></td>
+                                <td><small class="text-muted"><i class="fa fa-clock-o"></i> <?php echo $row->haritanggal;?></small></td>
                                 <td><?php echo $row->asisten;?></td>
-                                </td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>
@@ -234,123 +241,106 @@
                 </div>
             </div>
         </div>
-        <br>
-        <br>
+
+        <div style="height: 30px;"></div>
+
         <div class="row">
-            <div class="col-md-12">
-                <div class="contact-form">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-6 contact-option">
-                            <div class="contact-option_rsp contact-address">
-                                <h3>Silahkan Diisi Data Berikut :</h3>
-
-                                <form class="form-horizontal" action="<?php echo base_url().'Perizinan/simpan_file'?>" method="post" enctype="multipart/form-data">
-
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nama Lengkap" name="xnama" required>
-                                    </div>
-                                    <!-- // end .form-group -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="NRP contoh:(15-2018-085)" name="xnrp" required>
-                                    </div>
-                                    <!-- // end .form-group -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Jurusan" name="xjurusan" required>
-                                    </div>
-                                    <!-- // end .form-group -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Modul Praktikum contoh:(L1)" name="xmodul" required>
-                                    </div>
-                                    <!-- // end .form-group -->
-                                    <div class="form-group">
-                                        <h3 class="contact-details color-white">Tanggal Praktikum</h3>
-                                        <input type="date" class="form-control" placeholder="Tanggal Praktikum" name="xtanggal" required>
-                                    </div>
-                                    <!-- // end .form-group -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Shift" name="xshift" required>
-                                    </div>
-                                    <!-- // end .form-group -->
-                                    <div class="form-group">
-                                        <textarea placeholder="Alasan" class="form-control" name="xalasan" required rows="5"></textarea>
-                                    </div>
-                                    <!-- // end .form-group -->
-                                    <div class="form-group">
-                                        <h3>Surat Izin Praktikum</h3>
-                                        <input type="file" class="form-control" placeholder="Surat Izin Praktikum" name="xsurat" required>
-                                    </div>
-                                    <!-- // end .form-group -->
-
-                                    <!-- // end .form-group -->
-                                    <button type="submit" class="btn btn-default btn-submit">SUBMIT</button>
-                                    <br>
-                                    <br>
-                                    <div class="keterangan"><?php echo $this->session->flashdata('msg');?></div>
-                                    <!-- // end #js-contact-result -->
-                                    </form>
+            <div class="col-md-6 mb-4">
+                <div class="modern-card-box">
+                    <h3><i class="fa fa-pencil-square-o"></i> Form Pengajuan Perizinan</h3>
+                    
+                    <form action="<?php echo base_url().'Perizinan/simpan_file'?>" method="post" enctype="multipart/form-data" class="contact-form" style="box-shadow: none; border: none; padding: 0;">
+                        <div class="form-group">
+                            <label style="font-weight: 600; font-size: 13px; color: #475569;">Nama Lengkap</label>
+                            <input type="text" class="form-control" placeholder="Masukkan Nama Lengkap" name="xnama" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: 600; font-size: 13px; color: #475569;">NRP</label>
+                            <input type="text" class="form-control" placeholder="Contoh: 15-2018-085" name="xnrp" required>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: 600; font-size: 13px; color: #475569;">Jurusan</label>
+                            <input type="text" class="form-control" placeholder="Jurusan / Program Studi" name="xjurusan" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 600; font-size: 13px; color: #475569;">Modul Praktikum</label>
+                                    <input type="text" class="form-control" placeholder="Contoh: L1" name="xmodul" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="font-weight: 600; font-size: 13px; color: #475569;">Shift Praktikum</label>
+                                    <input type="text" class="form-control" placeholder="Pagi / Siang" name="xshift" required>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-6">
-                            <div class="contact-address">
-                                <h3>Lokasi</h3>
-                                <div class="contact-details">
-                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                    <h6>Alamat</h6>
-                                    <p> Gedung 16 ITENAS,
-                                        <br> , Jl. PH.H. Mustofa No.23
-                                        <br>  Bandung. 11001</p>
-                                </div>
-                                <br>
-                                <div class="contact-details">
-                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                    <h6>Email</h6>
-                                    <p>labfisikadasar@itenas.ac.id
-                                    </p>
-                                </div>
-                                <br>
-                                <div class="contact-details">
-                                    <i class="fa fa-phone" aria-hidden="true"></i>
-                                    <h6>Phone</h6>
-                                    <p>(+62)85324172245</p>
-                                </div>
-                                <br>
-                                <br>
-                                    <h3>Panduan Pengisian Data</h3>
-                                <br>
-                                <div class="contact-details">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <h6>Shift</h6>
-                                    <p>Diisi Pagi / Siang</p>
-                                </div>
-                                <br>
-
-                                <div class="contact-details">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <h6>Alasan</h6>
-                                    <p>Diisi Alasan tidak mengikuti praktikum</p>
-                                </div>
-                                <br>
-                                <div class="contact-details">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <h6>Surat Izin Praktikum</h6>
-                                    <p>Upload surat izin yang telah ditandatangani orangtua/wali dalam bentuk pdf. Formulir surat izin dapat diunduh di website Laboratorium Fisika Dasar. |
-                                        sertakan bukti izin praktikum seperti surat keterangan sakit dari dokter, surat keterangan mengikuti perlombaan, dan sebagainya. | surat izin dan bukti izin disatukan dalan satu file word yang dijadikan pdf.
-                                    </p>
-                                </div>
-                                <br>
-                                <div class="contact-details">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <h6>Format File</h6>
-                                    <p>Format File surat izin adalah : SuratIzin_NRP_Nama  bisa dengan format pdf.
-                                    </p>
-                                </div>
-
-                            </div>
+                        <div class="form-group">
+                            <label style="font-weight: 600; font-size: 13px; color: #475569;">Tanggal Praktikum</label>
+                            <input type="date" class="form-control" name="xtanggal" required>
                         </div>
+                        <div class="form-group">
+                            <label style="font-weight: 600; font-size: 13px; color: #475569;">Alasan Tidak Hadir</label>
+                            <textarea placeholder="Tuliskan alasan berhalangan hadir..." class="form-control" name="xalasan" required rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label style="font-weight: 600; font-size: 13px; color: #475569;">Upload Surat Izin & Bukti (PDF)</label>
+                            <input type="file" class="form-control" name="xsurat" required accept=".pdf">
+                        </div>
+
+                        <button type="submit" class="btn btn-submit"><i class="fa fa-paper-plane"></i> KIRIM PERIZINAN</button>
+                        <div class="keterangan mt-3"><?php echo $this->session->flashdata('msg');?></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="modern-card-box">
+                    <h3><i class="fa fa-info-circle"></i> Panduan Pengisian Data</h3>
+                    <p style="color: #64748b; font-size: 14px; margin-bottom: 25px;">Petunjuk persyaratan pengajuan perizinan dan susulan praktikum:</p>
+
+                    <div class="contact-details mb-4">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <div>
+                            <h6>1. Shift Praktikum</h6>
+                            <p>Diisi dengan <strong>Pagi</strong> atau <strong>Siang</strong> sesuai dengan jadwal reguler praktikum Anda.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-details mb-4">
+                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                        <div>
+                            <h6>2. Alasan Ketidakhadiran</h6>
+                            <p>Tuliskan alasan jelas mengapa Anda tidak dapat mengikuti praktikum pada tanggal yang ditentukan.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-details mb-4">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                        <div>
+                            <h6>3. Berkas Surat Izin & Bukti</h6>
+                            <p>Upload surat izin yang telah ditandatangani orangtua/wali serta lampirkan bukti resmi (surat sakit dokter/surat lomba). Disatukan dalam 1 file PDF.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-details mb-4">
+                        <i class="fa fa-font" aria-hidden="true"></i>
+                        <div>
+                            <h6>4. Format Penamaan File</h6>
+                            <p>Gunakan format penamaan file: <code>SuratIzin_NRP_Nama.pdf</code></p>
+                        </div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border-left: 4px solid #0284c7; padding: 18px 20px; border-radius: 12px; margin-top: 20px;">
+                        <h6 style="color: #0f172a; font-weight: 700; font-size: 14px; margin-bottom: 5px;"><i class="fa fa-map-marker" style="color: #0284c7;"></i> Lokasi Laboratorium</h6>
+                        <p style="font-size: 13px; color: #475569; margin: 0;">Gedung 16 ITENAS, Jl. PH.H. Mustofa No.23, Bandung.<br>Email: labfisikadasar@itenas.ac.id | Telp: (+62)85324172245</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
         <div class="row">
             <div class="col-md-12">
                 <p class="contact-center">OR</p>

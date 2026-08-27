@@ -20,10 +20,11 @@
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
     <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 
 </head>
 
-<body class="content-animed">
+<body class="content-animated">
 
 <!-- PRELOADER
 ==================================================-->
@@ -132,45 +133,30 @@
         </div>
     </div>
 </div>
-<section>
-    <div class="slider_img layout_two">
-        <div id="carousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/bg-nilai.png'?>" alt="First slide">
-                    <div class="carousel-caption d-md-block">
-                        <div class="slider_title">
-                            <h1>PENILAIAN PRAKTIKAN</h1>
-                            <h2>LABORATORIUM FISIKA DASAR ITENAS</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!--//END HEADER -->
-<section class="contact" style="margin-bottom:50px;">
+
+<section class="contact" style="padding-bottom: 80px;">
     <div class="container">
+        <!-- Hero Banner -->
         <div class="row">
             <div class="col-md-12">
-                <div class="contact-title">
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-graduation-cap"></i> Penilaian Praktikan</span>
                     <h2>Nilai Praktikum</h2>
+                    <p>Pengumuman dan publikasi hasil nilai praktikum Laboratorium Fisika Dasar Itenas.</p>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-striped" id="display">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <th>No.</th>
                             <th>Nilai</th>
-                            <th>Tanggal</th>
+                            <th>Tanggal Upload</th>
                             <th>Jurusan</th>
                             <th style="text-align:right;">Aksi</th>
                         </tr>
@@ -182,10 +168,10 @@
                             ?>
                             <tr>
                                 <td><?php echo $no++;?></td>
-                                <td><?php echo $row->nilai_judul;?></td>
-                                <td><?php echo $row->tanggal;?></td>
-                                <td><?php echo $row->nilai_jurusan;?></td>
-                                <td style="text-align:right;"><a href="<?php echo $row->nilai_link;?>" class="btn btn-info">Lihat</a></td>
+                                <td><strong><?php echo $row->nilai_judul;?></strong></td>
+                                <td><small class="text-muted"><i class="fa fa-calendar"></i> <?php echo $row->tanggal;?></small></td>
+                                <td><span class="badge badge-light" style="font-weight: 600; color: #475569; border: 1px solid #cbd5e1;"><?php echo $row->nilai_jurusan;?></span></td>
+                                <td style="text-align:right;"><a href="<?php echo $row->nilai_link;?>" target="_blank" class="btn btn-info"><i class="fa fa-external-link"></i> Lihat Nilai</a></td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>

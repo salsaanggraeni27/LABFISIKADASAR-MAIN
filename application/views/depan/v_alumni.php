@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 
     <style>
         .bingkai {
@@ -138,24 +139,15 @@
         </div>
     </div>
 </div>
-<section>
-    <div class="slider_img layout_two">
-        <div id="carousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/bg-alumni.png'?>" alt="First slide">
-                    <div class="carousel-caption d-md-block">
-                        <div class="slider_title">
-                            <h1>Coming Soon !</h1>
-                            <br>
-                            <h1>ALUMNI ASISTEN</h1>
-                            <h2>LABORATORIUM FISIKA DASAR ITENAS</h2>
-
-                        </div>
-                    </div>
+<section style="padding: 40px 0 80px;">
+    <div class="container">
+        <!-- Hero Banner Card -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-graduation-cap"></i> Alumni Asisten</span>
+                    <h2>Alumni Asisten Laboratorium</h2>
+                    <p>Daftar alumni asisten Laboratorium Fisika Dasar ITENAS.</p>
                 </div>
             </div>
         </div>

@@ -34,6 +34,8 @@ body {
 
 /* Navigation Menu - Sticky / Affix */
 div[data-toggle="affix"] {
+    position: relative !important;
+    z-index: 9999 !important;
     background-color: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
@@ -41,6 +43,15 @@ div[data-toggle="affix"] {
     border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
     padding: 10px 0 !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.affix {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999 !important;
 }
 
 .nav-menu2 {
@@ -88,19 +99,20 @@ div[data-toggle="affix"] {
 
 /* Dropdown Menu styling */
 .dropdown {
-    position: relative;
-    display: inline-block;
+    position: relative !important;
+    display: inline-block !important;
+    z-index: 10000 !important;
 }
 .dropdown-content {
     display: none;
-    position: absolute;
-    background-color: #ffffff;
+    position: absolute !important;
+    background-color: #ffffff !important;
     min-width: 250px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(241, 245, 249, 0.8);
-    border-radius: 12px;
-    padding: 8px;
-    z-index: 1050;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid rgba(241, 245, 249, 0.8) !important;
+    border-radius: 12px !important;
+    padding: 8px !important;
+    z-index: 99999 !important;
     margin-top: 5px;
     right: 0;
     opacity: 0;
@@ -613,3 +625,246 @@ footer ul li {
 .loader-area {
     border-top-color: #f97316 !important;
 }
+
+/* ==========================================================================
+   Peminjaman Page Custom Modern Styling
+   ========================================================================== */
+
+/* Hero Banner Card */
+.peminjaman-hero-card {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0284c7 100%);
+    border-radius: 20px;
+    padding: 35px 40px;
+    color: #ffffff;
+    margin-bottom: 35px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+.peminjaman-hero-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.25) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(249, 115, 22, 0.2);
+    border: 1px solid rgba(249, 115, 22, 0.4);
+    color: #fdba74;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 50px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.peminjaman-hero-card h2,
+.our-teachers .peminjaman-hero-card h2,
+.events .peminjaman-hero-card h2,
+.contact .peminjaman-hero-card h2,
+.welcome_about .peminjaman-hero-card h2 {
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin: 0 0 10px 0 !important;
+    text-align: left !important;
+    padding-bottom: 0 !important;
+}
+.peminjaman-hero-card h2::after,
+.our-teachers .peminjaman-hero-card h2::after,
+.events .peminjaman-hero-card h2::after,
+.contact .peminjaman-hero-card h2::after,
+.welcome_about .peminjaman-hero-card h2::after {
+    display: none !important;
+}
+.peminjaman-hero-card p {
+    font-size: 15px !important;
+    color: #cbd5e1 !important;
+    margin: 0 !important;
+    max-width: 700px;
+    text-align: left !important;
+}
+
+/* Section Title */
+.section-title-modern {
+    margin-bottom: 25px;
+}
+.section-title-modern h3 {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin: 0 0 5px 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.section-title-modern h3 i {
+    color: #f97316;
+}
+.section-title-modern p {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* DataTables Modern Overrides */
+.dataTables_wrapper {
+    padding: 10px 5px;
+}
+.dataTables_wrapper .dataTables_length select {
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 6px 12px !important;
+    outline: none;
+    font-size: 13.5px;
+    color: #334155;
+    background-color: #f8fafc;
+    margin: 0 6px;
+}
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 6px 14px !important;
+    outline: none;
+    font-size: 13.5px;
+    color: #334155;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+}
+.dataTables_wrapper .dataTables_filter input:focus {
+    border-color: #f97316 !important;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15) !important;
+    background-color: #ffffff;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 8px !important;
+    padding: 6px 14px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);
+}
+
+/* Table Badge Styling */
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+}
+.badge-status-dipinjam {
+    background-color: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #ffedd5;
+}
+.badge-status-menunggu {
+    background-color: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #dbeafe;
+}
+.badge-status-selesai {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #dcfce7;
+}
+
+/* Inline Return Form */
+.form-return-inline {
+    margin-top: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 10px 12px;
+    border-radius: 10px;
+}
+.form-return-inline select {
+    font-size: 12.5px !important;
+    height: 32px !important;
+    border-radius: 6px !important;
+    border: 1px solid #cbd5e1 !important;
+    margin-bottom: 6px;
+    background-color: #ffffff;
+}
+.btn-action-return {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    padding: 4px 10px !important;
+    font-size: 12px !important;
+    width: 100%;
+    transition: all 0.2s ease;
+}
+.btn-action-return:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(2, 132, 199, 0.3);
+}
+
+/* Modern Card Containers for Form & Guide */
+.modern-card-box {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03);
+    padding: 30px;
+    height: 100%;
+}
+.modern-card-box h3 {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-bottom: 20px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.modern-card-box h3 i {
+    color: #f97316;
+}
+
+/* Tool selection sub-table inside form */
+.tools-selection-table {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    max-height: 280px;
+    overflow-y: auto;
+}
+.tools-selection-table table {
+    margin: 0;
+}
+.tools-selection-table th {
+    background: #f8fafc !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #475569 !important;
+    text-transform: uppercase;
+    padding: 10px 14px !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+.tools-selection-table td {
+    padding: 8px 14px !important;
+    vertical-align: middle !important;
+    font-size: 13.5px !important;
+    border-top: 1px solid #f1f5f9 !important;
+}
+

@@ -26,6 +26,7 @@
     <link href="<?php echo base_url().'theme/css/animated-masonry-gallery.css'?>" rel="stylesheet" type="text/css" />
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 </head>
 
 <body class="content-animated">
@@ -141,14 +142,18 @@
 </section>
 <!--//END HEADER -->
 <!--============================= Gallery =============================-->
-<div class="gallery-wrap">
+<div class="gallery-wrap" style="padding: 40px 0 80px;">
     <div class="container">
-        <!-- Style 2 -->
+        <!-- Hero Banner Card -->
         <div class="row">
             <div class="col-md-12">
-                <h3 class="gallery-style">Gallery Photo</h3>
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-picture-o"></i> Galeri Foto</span>
+                    <h2>Galeri Kegiatan & Dokumentasi</h2>
+                    <p>Dokumentasi foto kegiatan, fasilitas, dan momen praktikum Laboratorium Fisika Dasar ITENAS.</p>
+                </div>
             </div>
-        </div><br>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div id="gallery">

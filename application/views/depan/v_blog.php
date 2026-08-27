@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
     <?php
     function limit_words($string, $word_limit){
         $words = explode(" ",$string);
@@ -418,8 +419,18 @@
 </section>
 <!--//END HEADER -->
 <!--============================= BLOG =============================-->
-<section class="blog-wrap">
+<section class="blog-wrap" style="padding: 40px 0 80px;">
     <div class="container">
+        <!-- Hero Banner Card -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-rss-square"></i> Blog & Artikel</span>
+                    <h2>Blog & Informasi Praktikum</h2>
+                    <p>Berita, panduan, dan artikel seputar materi serta kegiatan praktikum Fisika Dasar ITENAS.</p>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-8">
                 <?php echo $this->session->flashdata('msg');?>

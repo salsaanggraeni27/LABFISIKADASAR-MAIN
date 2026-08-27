@@ -20,6 +20,7 @@
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
     <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -303,8 +304,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="contact-title">
-                    <h2>Download</h2>
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-download"></i> Download Center</span>
+                    <h2>Download Berkas & Modul</h2>
+                    <p>Unduh berkas, modul, dan dokumen pendukung praktikum Laboratorium Fisika Dasar ITENAS.</p>
                 </div>
             </div>
         </div>

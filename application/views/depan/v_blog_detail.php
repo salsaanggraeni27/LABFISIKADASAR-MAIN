@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
     <!--Social Share-->
     <link href="<?php echo base_url().'theme/css/jssocials.css'?>" rel="stylesheet">
     <link href="<?php echo base_url().'theme/css/jssocials-theme-flat.css'?>" rel="stylesheet">
@@ -153,8 +154,18 @@
 </section>
 <!--//END HEADER -->
 <!--============================= BLOG =============================-->
-<section class="blog-wrap">
+<section class="blog-wrap" style="padding: 40px 0 80px;">
     <div class="container">
+        <!-- Hero Banner Card -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-newspaper-o"></i> Detail Artikel</span>
+                    <h2><?php echo $title;?></h2>
+                    <p>Oleh <strong><?php echo $author;?></strong> | Kategori: <strong><?php echo $kategori;?></strong> | Tanggal: <strong><?php echo $tanggal;?></strong></p>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-8">
                 <div class="blog-img_block">

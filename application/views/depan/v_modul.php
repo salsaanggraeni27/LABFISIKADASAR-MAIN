@@ -20,6 +20,7 @@
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
     <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 
 </head>
 
@@ -132,47 +133,32 @@
         </div>
     </div>
 </div>
-<section>
-    <div class="slider_img layout_two">
-        <div id="carousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/bg-modul.png'?>" alt="First slide">
-                    <div class="carousel-caption d-md-block">
-                        <div class="slider_title">
-                            <h1>MODUL PRAKTIKUM</h1>
-                            <h3>LABORATORIUM FISIKA DASAR ITENAS</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!--//END HEADER -->
-<section class="contact" style="margin-bottom:50px;">
+
+<section class="contact" style="padding-bottom: 80px;">
     <div class="container">
+        <!-- Hero Banner -->
         <div class="row">
             <div class="col-md-12">
-                <div class="contact-title">
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-book"></i> Materi & Pembelajaran</span>
                     <h2>Modul Praktikum</h2>
+                    <p>Unduh modul panduan praktikum, Lembar Kerja Praktikum (LJK), serta tonton video penjelasan eksperimen.</p>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-striped" id="display">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <th>No.</th>
                             <th>Modul</th>
                             <th>Judul Modul</th>
                             <th>Kategori</th>
-                            <th style="text-align:right;">Aksi</th>
+                            <th style="text-align:right;">Materi & LJK</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -182,10 +168,13 @@
                             ?>
                             <tr>
                                 <td><?php echo $no++;?></td>
-                                <td><?php echo $row->modul_judul;?></td>
+                                <td><strong><?php echo $row->modul_judul;?></strong></td>
                                 <td><?php echo $row->modul_oleh;?></td>
-                                <td><?php echo $row->modul_deskripsi;?></td>
-                                <td style="text-align:right;"><a href="<?php echo $row->modul_link;?>" class="btn btn-success">LJK</a><a href="<?php echo $row->modul_linkytb;?>" class="btn btn-info">Video</a></td>
+                                <td><span class="badge badge-light" style="font-weight: 600; color: #475569; border: 1px solid #cbd5e1;"><?php echo $row->modul_deskripsi;?></span></td>
+                                <td style="text-align:right;">
+                                    <a href="<?php echo $row->modul_link;?>" target="_blank" class="btn btn-success btn-sm" style="margin-right: 4px; border-radius: 6px; font-weight: 600;"><i class="fa fa-file-text-o"></i> LJK</a>
+                                    <a href="<?php echo $row->modul_linkytb;?>" target="_blank" class="btn btn-info btn-sm" style="border-radius: 6px; font-weight: 600;"><i class="fa fa-youtube-play"></i> Video</a>
+                                </td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>

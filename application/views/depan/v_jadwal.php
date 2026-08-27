@@ -20,6 +20,7 @@
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
     <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 
 </head>
 
@@ -132,46 +133,30 @@
         </div>
     </div>
 </div>
-<section>
-    <div class="slider_img layout_two">
-        <div id="carousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="d-block" src="<?php echo base_url().'theme/images/bg-jadwal.png'?>" alt="First slide">
-                    <div class="carousel-caption d-md-block">
-                        <div class="slider_title">
-                            <h1>JADWAL PRAKTIKUM</h1>
-                            <h3>LABORATORIUM FISIKA DASAR ITENAS</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!--//END HEADER -->
-<section class="contact" style="margin-bottom:50px;">
+
+<section class="contact" style="padding-bottom: 80px;">
     <div class="container">
+        <!-- Hero Banner -->
         <div class="row">
             <div class="col-md-12">
-                <div class="contact-title">
-                    <h2>Jadwal Praktikum Fisika Dasar 2022/2023 </h2>
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-calendar"></i> Jadwal Pelaksanaan</span>
+                    <h2>Jadwal Praktikum</h2>
+                    <p>Informasi jadwal pelaksanaan praktikum Fisika Dasar berdasarkan jurusan dan gelombang.</p>
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-striped" id="display">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <th>No.</th>
                             <th>Jadwal</th>
                             <th>Jurusan</th>
-
                             <th style="text-align:right;">Aksi</th>
                         </tr>
                         </thead>
@@ -182,10 +167,10 @@
                             ?>
                             <tr>
                                 <td><?php echo $no++;?></td>
-                                <td><?php echo $row->jadwal_judul;?></td>
-                                <td><?php echo $row->jadwal_jurusan;?></td>
+                                <td><strong><?php echo $row->jadwal_judul;?></strong></td>
+                                <td><span class="badge badge-light" style="font-weight: 600; color: #475569; border: 1px solid #cbd5e1;"><?php echo $row->jadwal_jurusan;?></span></td>
 
-                                <td style="text-align:right;"><a href="<?php echo $row->jadwal_link;?>" class="btn btn-info">Lihat</a></td>
+                                <td style="text-align:right;"><a href="<?php echo $row->jadwal_link;?>" target="_blank" class="btn btn-info"><i class="fa fa-external-link"></i> Lihat Jadwal</a></td>
                             </tr>
                         <?php endforeach;?>
                         </tbody>

@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
 </head>
@@ -136,8 +137,18 @@
 <!--//END HEADER -->
 <!--//END ABOUT IMAGE -->
 <!--============================= WELCOME TITLE =============================-->
-<section class="welcome_about">
+<section class="welcome_about" style="padding: 40px 0 80px;">
     <div class="container">
+        <!-- Hero Banner Card -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-info-circle"></i> Tentang Kami</span>
+                    <h2>Tentang Laboratorium Fisika Dasar</h2>
+                    <p>Profil, visi, misi, dan peran penting Laboratorium Fisika Dasar ITENAS.</p>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-7">
                 <h2>Kata Sambutan</h2>

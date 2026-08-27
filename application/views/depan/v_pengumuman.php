@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo base_url().'theme/css/modern-custom.css'?>" rel="stylesheet">
 </head>
 
 <body class="content-animated">
@@ -136,20 +137,16 @@
 </section>
 <!--//END HEADER -->
 <!--============================= EVENTS =============================-->
-<section class="events">
+<section class="events" style="padding: 40px 0 80px;">
     <div class="container">
+        <!-- Hero Banner Card -->
         <div class="row">
-            <div class="col-md-4">
-                <h2 class="event-title">Pengumuman</h2>
-            </div>
-            <div class="col-md-8">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item nav-tab1">
-                        <a class="nav-link tab-list active" data-toggle="tab" href="#upcoming-events" role="tab">Pengumuman Terbaru </a>
-                    </li>
-
-                </ul>
+            <div class="col-md-12">
+                <div class="peminjaman-hero-card">
+                    <span class="hero-badge"><i class="fa fa-bullhorn"></i> Pengumuman</span>
+                    <h2>Pengumuman Praktikum</h2>
+                    <p>Informasi resmi, pengumuman jadwal, dan pemberitahuan penting Laboratorium Fisika Dasar ITENAS.</p>
+                </div>
             </div>
         </div>
         <br>
