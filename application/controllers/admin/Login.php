@@ -31,6 +31,12 @@ class Login extends CI_Controller{
             redirect('admin/login/register');
         }
 
+        // Validate email domain (@mhs.itenas.ac.id)
+        if (strtolower(substr(trim($email), -17)) !== '@mhs.itenas.ac.id') {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert"><span class="fa fa-close"></span></button> Registrasi gagal. Wajib menggunakan email mahasiswa</div>');
+            redirect('admin/login/register');
+        }
+
         if ($password <> $password_confirm) {
             $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert"><span class="fa fa-close"></span></button> Password dan Konfirmasi Password tidak cocok!</div>');
             redirect('admin/login/register');
@@ -98,6 +104,12 @@ class Login extends CI_Controller{
 
     function logout(){
         $this->session->sess_destroy();
+        // Clear both session cookies
+        foreach (array('ci_session', 'ci_session_admin') as $name) {
+            if (isset($_COOKIE[$name])) {
+                setcookie($name, '', time() - 3600, '/');
+            }
+        }
         redirect('home');
     }
 }

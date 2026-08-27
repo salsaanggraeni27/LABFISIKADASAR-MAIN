@@ -378,7 +378,48 @@ $config['encryption_key'] = 'TRUE';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
+$is_admin_session = FALSE;
+$request_uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+
+if (strpos($request_uri, '/admin/') !== FALSE || strpos($request_uri, '/administrator') !== FALSE) {
+    $is_admin_session = TRUE;
+    
+    // Exception 1: Student registration pages
+    if (strpos($request_uri, '/register') !== FALSE) {
+        $is_admin_session = FALSE;
+    }
+    
+    // Exception 2: Login authentication submission
+    if (strpos($request_uri, '/auth') !== FALSE && isset($_POST['username'])) {
+        $username = $_POST['username'];
+        $db_config_file = APPPATH . 'config/database.php';
+        if (file_exists($db_config_file)) {
+            if (!defined('BASEPATH')) define('BASEPATH', TRUE);
+            include($db_config_file);
+            if (isset($db['default'])) {
+                $db_conn = @mysqli_connect(
+                    $db['default']['hostname'],
+                    $db['default']['username'],
+                    $db['default']['password'],
+                    $db['default']['database']
+                );
+                if ($db_conn) {
+                    $username_escaped = mysqli_real_escape_string($db_conn, $username);
+                    $result = @mysqli_query($db_conn, "SELECT pengguna_level FROM tbl_pengguna WHERE pengguna_username = '$username_escaped' LIMIT 1");
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        $row = mysqli_fetch_assoc($result);
+                        if ($row['pengguna_level'] != '1') {
+                            $is_admin_session = FALSE;
+                        }
+                    }
+                    @mysqli_close($db_conn);
+                }
+            }
+        }
+    }
+}
+
+$config['sess_cookie_name'] = $is_admin_session ? 'ci_session_admin' : 'ci_session';
 $config['sess_expiration'] = 0;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;

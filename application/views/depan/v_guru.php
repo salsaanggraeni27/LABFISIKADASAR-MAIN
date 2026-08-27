@@ -22,11 +22,160 @@
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
 
+    <!-- Google Font for Asisten Page -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        /* ===== Asisten Section Title ===== */
+        .our-teachers {
+            padding: 70px 0 80px !important;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+        }
+        .our-teachers h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 26px !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            text-align: center;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 18px;
+        }
+        .our-teachers h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            margin: 14px auto 0;
+            border-radius: 10px;
+        }
+
+        /* ===== Card Container ===== */
+        .admission_insruction {
+            background: #ffffff !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(226, 232, 240, 0.7) !important;
+            padding: 30px 20px 25px !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .admission_insruction::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0284c7, #f97316);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .admission_insruction:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+        }
+        .admission_insruction:hover::before {
+            opacity: 1;
+        }
+
+        /* ===== Profile Image ===== */
+        .admission_insruction img {
+            width: 130px !important;
+            height: 130px !important;
+            border-radius: 50% !important;
+            object-fit: cover;
+            margin: 0 auto 18px !important;
+            border: 4px solid #f1f5f9 !important;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: block;
+        }
+        .admission_insruction:hover img {
+            transform: scale(1.06);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ===== Name Label ===== */
         .bingkai {
-            border-bottom: 2px groove #073bcd;
-            border-left: 2px groove #073bcd;
-            border-right: 2px groove #073bcd;
+            border: none !important;
+            border-bottom: none !important;
+            border-left: none !important;
+            border-right: none !important;
+            background: linear-gradient(135deg, #eff6ff, #f0f9ff) !important;
+            color: #1e3a5f !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 14px !important;
+            padding: 8px 16px !important;
+            border-radius: 10px !important;
+            display: inline-block !important;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== Social / Action Buttons ===== */
+        .admission_insruction .btn {
+            border-radius: 50% !important;
+            width: 40px;
+            height: 40px;
+            padding: 0 !important;
+            line-height: 40px !important;
+            font-size: 15px !important;
+            margin: 0 5px;
+            border: none !important;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .admission_insruction .btn-info {
+            background: linear-gradient(135deg, #0ea5e9, #0284c7) !important;
+            color: #fff !important;
+        }
+        .admission_insruction .btn-success {
+            background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+            color: #fff !important;
+        }
+        .admission_insruction .btn-danger {
+            background: linear-gradient(135deg, #f43f5e, #e11d48) !important;
+            color: #fff !important;
+        }
+        .admission_insruction .btn:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        /* ===== Pagination ===== */
+        .our-teachers nav {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .our-teachers nav .pagination {
+            justify-content: center;
+        }
+        .our-teachers nav .pagination li a,
+        .our-teachers nav .pagination li span {
+            border-radius: 10px !important;
+            margin: 0 3px;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 14px;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            transition: all 0.2s ease;
+        }
+        .our-teachers nav .pagination li.active a,
+        .our-teachers nav .pagination li.active span {
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            border-color: transparent !important;
+            color: #fff !important;
+        }
+        .our-teachers nav .pagination li a:hover {
+            background-color: #f1f5f9;
+            color: #0284c7;
         }
     </style>
 </head>

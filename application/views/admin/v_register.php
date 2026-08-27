@@ -57,8 +57,9 @@
             </div>
 
             <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                <input type="email" name="email" class="form-control" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@mhs\.itenas\.ac\.id" title="Wajib menggunakan email mahasiswa" required>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="help-block" style="font-size: 11px; color: #737373; margin-top: 5px;">* Wajib menggunakan email mahasiswa</span>
             </div>
 
             <div class="form-group has-feedback">

@@ -28,6 +28,314 @@
         return implode(" ",array_splice($words,0,$word_limit));
     }
     ?>
+
+    <!-- Google Font for Home Page -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           TESTIMONIAL SECTION
+           ============================================================ */
+        .testimonial {
+            background: linear-gradient(135deg, #0a1628 0%, #162544 35%, #1e3a5f 70%, #2a5a8f 100%) !important;
+            padding: 90px 0 100px !important;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Decorative background glow */
+        .testimonial::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -80px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .testimonial::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -60px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .testimonial h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 30px !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            text-align: center !important;
+            margin-bottom: 55px !important;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            margin: 18px auto 0;
+            border-radius: 10px;
+        }
+        /* Quote Card */
+        .quote {
+            background: rgba(255, 255, 255, 0.06) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 24px !important;
+            padding: 50px 45px 45px !important;
+            margin: 0 15px;
+            position: relative;
+            z-index: 1;
+        }
+        /* Large decorative quote icon */
+        .quote i.fa-quote-left {
+            color: #f97316 !important;
+            font-size: 36px !important;
+            opacity: 0.35;
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .quote_text {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 16px !important;
+            line-height: 1.9 !important;
+            color: rgba(255, 255, 255, 0.85) !important;
+            text-align: center !important;
+            font-style: normal !important;
+            margin-bottom: 30px !important;
+            font-weight: 400;
+        }
+        /* Profile block */
+        .testi-img_block {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 16px !important;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 14px 24px;
+            border-radius: 60px;
+            display: inline-flex !important;
+            margin: 0 auto;
+            width: auto;
+        }
+        .single-item .quote .testi-img_block {
+            display: inline-flex !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .testi-img_block img {
+            width: 54px !important;
+            height: 54px !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
+            border: 3px solid #f97316 !important;
+            box-shadow: 0 0 18px rgba(249, 115, 22, 0.3);
+        }
+        .testi-img_block p {
+            text-align: left !important;
+            margin: 0 !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 13px !important;
+            color: rgba(255, 255, 255, 0.55) !important;
+            line-height: 1.5 !important;
+        }
+        .testi-img_block p span {
+            display: block !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            color: #ffffff !important;
+            margin-bottom: 3px;
+        }
+        /* Slick dots */
+        .testimonial .slick-dots li button:before {
+            color: rgba(255,255,255,0.25) !important;
+            font-size: 10px !important;
+        }
+        .testimonial .slick-dots li.slick-active button:before {
+            color: #f97316 !important;
+        }
+
+        /* ============================================================
+           PENGUMUMAN & AGENDA SECTION
+           ============================================================ */
+        .event {
+            padding: 80px 0 90px !important;
+            background: #ffffff !important;
+        }
+        .event h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 28px !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-bottom: 40px !important;
+        }
+        .event h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            margin-top: 12px;
+            border-radius: 10px;
+        }
+        /* Pengumuman Card */
+        .event-img2 {
+            background: #ffffff !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(226, 232, 240, 0.8) !important;
+            padding: 28px !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+        }
+        .event-img2 .row {
+            margin-bottom: 22px !important;
+            padding-bottom: 22px !important;
+            border-bottom: 1px solid #f1f5f9 !important;
+            align-items: center;
+            transition: transform 0.2s ease;
+        }
+        .event-img2 .row:hover {
+            transform: translateX(4px);
+        }
+        .event-img2 .row:last-child {
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+            border-bottom: none !important;
+        }
+        .event-img2 img {
+            max-width: 55px !important;
+            opacity: 0.85;
+        }
+        .event-img2 h3 {
+            margin: 0 0 4px 0 !important;
+        }
+        .event-img2 h3 a {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            color: #1e293b !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+            text-decoration: none !important;
+            transition: color 0.2s ease !important;
+        }
+        .event-img2 h3 a:hover {
+            color: #f97316 !important;
+        }
+        .event-img2 span {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 12px !important;
+            color: #94a3b8 !important;
+            display: block !important;
+            margin: 4px 0 8px !important;
+            font-weight: 500;
+        }
+        .event-img2 p {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 13.5px !important;
+            color: #64748b !important;
+            line-height: 1.6 !important;
+            margin: 0 !important;
+        }
+        /* Agenda side */
+        .event_date {
+            float: left;
+            margin-right: 18px;
+        }
+        .event-date-wrap {
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            color: #ffffff !important;
+            border-radius: 14px !important;
+            padding: 14px 16px !important;
+            text-align: center !important;
+            min-width: 70px;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+        .event-date-wrap p {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 26px !important;
+            font-weight: 800 !important;
+            color: #ffffff !important;
+            margin: 0 !important;
+            line-height: 1 !important;
+        }
+        .event-date-wrap span {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 11px !important;
+            color: rgba(255,255,255,0.85) !important;
+            text-transform: uppercase !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px;
+        }
+        .date-description h3 a {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            color: #1e293b !important;
+            font-weight: 700 !important;
+            font-size: 15px !important;
+            text-decoration: none !important;
+            transition: color 0.2s ease !important;
+        }
+        .date-description h3 a:hover {
+            color: #f97316 !important;
+        }
+        .date-description p {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 13px !important;
+            color: #64748b !important;
+        }
+        .event_line {
+            border-color: #f1f5f9 !important;
+        }
+
+        /* ============================================================
+           ABOUT US / VISI / MISI SECTION
+           ============================================================ */
+        .welcome_about {
+            padding: 80px 0 90px !important;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+        }
+        .welcome_about h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 26px !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-bottom: 18px !important;
+            position: relative;
+            padding-bottom: 14px;
+        }
+        .welcome_about h2::after {
+            content: '';
+            display: block;
+            width: 45px;
+            height: 4px;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        .welcome_about p {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 14.5px !important;
+            line-height: 1.8 !important;
+            color: #475569 !important;
+        }
+        .welcome_about img {
+            border-radius: 20px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+            border: 4px solid rgba(255, 255, 255, 0.8) !important;
+            transition: transform 0.4s ease;
+        }
+        .welcome_about img:hover {
+            transform: scale(1.03);
+        }
+    </style>
 </head>
 
 <body class="content-animated">

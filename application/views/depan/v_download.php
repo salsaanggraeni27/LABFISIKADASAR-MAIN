@@ -21,6 +21,169 @@
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
     <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Page Layout ===== */
+        .contact {
+            padding: 60px 0 80px !important;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+        }
+
+        /* ===== Page Title ===== */
+        .contact-title h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 30px !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            text-align: center !important;
+            margin-bottom: 10px !important;
+            position: relative;
+            padding-bottom: 16px;
+        }
+        .contact-title h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #f97316, #fb923c);
+            margin: 14px auto 0;
+            border-radius: 10px;
+        }
+
+        /* ===== Table Container ===== */
+        .table-responsive {
+            background: #ffffff !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(226, 232, 240, 0.7) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+            padding: 28px !important;
+            overflow: hidden;
+        }
+
+        /* ===== DataTable Overrides ===== */
+        .table {
+            margin-bottom: 0 !important;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
+        }
+        .table thead th {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            background-color: #f8fafc !important;
+            border-bottom: 2px solid #e2e8f0 !important;
+            border-top: none !important;
+            color: #475569 !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.8px;
+            padding: 16px 20px !important;
+        }
+        .table tbody td {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            padding: 16px 20px !important;
+            font-size: 14px !important;
+            color: #334155 !important;
+            border-top: 1px solid #f1f5f9 !important;
+            vertical-align: middle !important;
+            font-weight: 500;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #ffffff !important;
+        }
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #fafbfc !important;
+        }
+        .table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+        .table tbody tr:hover {
+            background-color: rgba(249, 115, 22, 0.03) !important;
+        }
+
+        /* ===== Download Button ===== */
+        .table .btn-info {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            background: linear-gradient(135deg, #f97316, #ea580c) !important;
+            border: none !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            font-size: 13px !important;
+            border-radius: 10px !important;
+            padding: 8px 22px !important;
+            transition: all 0.25s ease !important;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.2);
+        }
+        .table .btn-info:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.35) !important;
+        }
+        .table .btn-info i {
+            margin-right: 5px;
+        }
+
+        /* ===== DataTables Search & Length ===== */
+        .dataTables_wrapper {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 10px !important;
+            padding: 8px 14px !important;
+            font-size: 14px !important;
+            background-color: #f8fafc !important;
+            transition: all 0.2s ease;
+            outline: none !important;
+        }
+        .dataTables_wrapper .dataTables_filter input:focus {
+            border-color: #f97316 !important;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12) !important;
+            background-color: #ffffff !important;
+        }
+        .dataTables_wrapper .dataTables_length select {
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 8px !important;
+            padding: 6px 10px !important;
+            font-size: 14px !important;
+            background-color: #f8fafc !important;
+        }
+        .dataTables_wrapper .dataTables_info {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 13px !important;
+            color: #64748b !important;
+            padding-top: 16px !important;
+        }
+
+        /* ===== DataTables Pagination ===== */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            border-radius: 10px !important;
+            border: 1px solid #e2e8f0 !important;
+            margin: 0 3px !important;
+            padding: 6px 14px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: #475569 !important;
+            transition: all 0.2s ease !important;
+            background: #ffffff !important;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: #f1f5f9 !important;
+            color: #0284c7 !important;
+            border-color: #cbd5e1 !important;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            border-color: transparent !important;
+            color: #ffffff !important;
+        }
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            color: #ffffff !important;
+        }
+    </style>
+
 </head>
 
 <body class="content-animated">

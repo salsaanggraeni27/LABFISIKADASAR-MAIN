@@ -25,6 +25,284 @@
         return implode(" ",array_splice($words,0,$word_limit));
     }
     ?>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Blog Section Layout ===== */
+        .blog-wrap {
+            padding: 60px 0 80px !important;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+        }
+
+        /* ===== Blog Post Card ===== */
+        .blog-single-item {
+            background: #ffffff !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(226, 232, 240, 0.7) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+            overflow: hidden;
+            margin-bottom: 30px !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blog-single-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07) !important;
+        }
+        .blog-img_block {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0 !important;
+        }
+        .blog-img_block img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .blog-single-item:hover .blog-img_block img {
+            transform: scale(1.05);
+        }
+        .blog-date {
+            position: absolute !important;
+            bottom: 14px !important;
+            left: 14px !important;
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            color: #ffffff !important;
+            padding: 6px 14px !important;
+            border-radius: 10px !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            box-shadow: 0 3px 10px rgba(2, 132, 199, 0.3);
+        }
+        .blog-date span {
+            color: #ffffff !important;
+        }
+        .blog-tiltle_block {
+            padding: 24px 28px 20px !important;
+        }
+        .blog-tiltle_block h4 {
+            margin-bottom: 10px !important;
+        }
+        .blog-tiltle_block h4 a {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            color: #1e293b !important;
+            text-decoration: none !important;
+            transition: color 0.2s ease !important;
+            line-height: 1.4;
+        }
+        .blog-tiltle_block h4 a:hover {
+            color: #f97316 !important;
+        }
+        .blog-tiltle_block h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 12.5px !important;
+            color: #94a3b8 !important;
+            font-weight: 500 !important;
+            margin-bottom: 12px !important;
+        }
+        .blog-tiltle_block h6 a {
+            color: #64748b !important;
+            text-decoration: none !important;
+        }
+        .blog-tiltle_block h6 a span {
+            margin-left: 4px;
+        }
+        .blog-tiltle_block h6 a i {
+            color: #94a3b8;
+            margin-right: 3px;
+        }
+        .blog-icons {
+            margin-top: 16px !important;
+            padding-top: 16px !important;
+            border-top: 1px solid #f1f5f9 !important;
+        }
+        .blog-share_block a {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            background: linear-gradient(135deg, #f97316, #ea580c) !important;
+            color: #ffffff !important;
+            padding: 8px 22px !important;
+            border-radius: 10px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            text-decoration: none !important;
+            transition: all 0.25s ease !important;
+            display: inline-block;
+        }
+        .blog-share_block a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35) !important;
+        }
+
+        /* ===== Sidebar ===== */
+        /* Search */
+        .blog-search {
+            width: 100% !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 12px !important;
+            padding: 12px 16px !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 14px !important;
+            background-color: #ffffff !important;
+            transition: all 0.2s ease;
+            margin-bottom: 10px !important;
+        }
+        .blog-search:focus {
+            border-color: #f97316 !important;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12) !important;
+            outline: none !important;
+        }
+        .btn-blogsearch {
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            border: none !important;
+            color: #ffffff !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 13px !important;
+            border-radius: 10px !important;
+            padding: 10px 24px !important;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease !important;
+            width: 100%;
+        }
+        .btn-blogsearch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3) !important;
+        }
+
+        /* Category Block */
+        .blog-category_block {
+            background: #ffffff !important;
+            border-radius: 16px !important;
+            border: 1px solid rgba(226, 232, 240, 0.7) !important;
+            padding: 24px !important;
+            margin-top: 25px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+        }
+        .blog-category_block h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 18px !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-bottom: 16px !important;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        .blog-category_block ul {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .blog-category_block ul li {
+            margin-bottom: 0 !important;
+        }
+        .blog-category_block ul li a {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 12px 14px !important;
+            color: #475569 !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            border-radius: 10px !important;
+            transition: all 0.2s ease !important;
+        }
+        .blog-category_block ul li a:hover {
+            background-color: rgba(249, 115, 22, 0.06) !important;
+            color: #f97316 !important;
+            padding-left: 18px !important;
+        }
+        .blog-category_block ul li a i {
+            color: #cbd5e1;
+            transition: color 0.2s ease;
+        }
+        .blog-category_block ul li a:hover i {
+            color: #f97316;
+        }
+
+        /* Popular Posts */
+        .blog-featured_post {
+            background: #ffffff !important;
+            border-radius: 16px !important;
+            border: 1px solid rgba(226, 232, 240, 0.7) !important;
+            padding: 24px !important;
+            margin-top: 25px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+        }
+        .blog-featured_post h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 18px !important;
+            font-weight: 800 !important;
+            color: #0f172a !important;
+            margin-bottom: 16px !important;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        .blog-featured-img_block {
+            display: flex !important;
+            align-items: center !important;
+            gap: 14px !important;
+            padding: 10px 0;
+            transition: transform 0.2s ease;
+        }
+        .blog-featured-img_block:hover {
+            transform: translateX(4px);
+        }
+        .blog-featured-img_block img {
+            width: 65px !important;
+            height: 50px !important;
+            border-radius: 10px !important;
+            object-fit: cover !important;
+        }
+        .blog-featured-img_block h5 {
+            margin: 0 !important;
+        }
+        .blog-featured-img_block h5 a {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 14px !important;
+            font-weight: 600 !important;
+            color: #1e293b !important;
+            text-decoration: none !important;
+            transition: color 0.2s ease !important;
+        }
+        .blog-featured-img_block h5 a:hover {
+            color: #f97316 !important;
+        }
+        .blog-featured-img_block p {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 12px !important;
+            color: #94a3b8 !important;
+            margin: 3px 0 0 !important;
+        }
+        .blog-featured_post hr {
+            border-color: #f1f5f9 !important;
+            margin: 5px 0 !important;
+        }
+
+        /* ===== Pagination ===== */
+        .blog-wrap nav .pagination li a,
+        .blog-wrap nav .pagination li span {
+            border-radius: 10px !important;
+            margin: 0 3px;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            transition: all 0.2s ease;
+        }
+        .blog-wrap nav .pagination li.active a {
+            background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+            border-color: transparent !important;
+            color: #fff !important;
+        }
+    </style>
 </head>
 
 <body class="content-animated">
