@@ -68,8 +68,9 @@
             </div>
 
             <div class="form-group has-feedback">
-                <input type="text" name="username" class="form-control" placeholder="Username" required>
+                <input type="text" name="username" class="form-control" placeholder="Username" pattern="[0-9\-]+" title="Username wajib menggunakan NRP Mahasiswa (angka)" required>
                 <span class="glyphicon glyphicon-tag form-control-feedback"></span>
+                <span class="help-block" style="font-size: 11px; color: #737373; margin-top: 5px;">* Username wajib menggunakan NRP Mahasiswa</span>
             </div>
 
             <div class="form-group has-feedback">
