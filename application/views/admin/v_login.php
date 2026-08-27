@@ -22,13 +22,13 @@
 </head>
 <body class="hold-transition login-page">
 
-<a href="javascript:void(0)" onclick="history.back()" class="btn-back-page">
+<a href="<?php echo site_url('home'); ?>" class="btn-back-page">
     <i class="fa fa-arrow-left"></i> Kembali
 </a>
 
 <div class="login-box">
     <div>
-        <p><?php echo $this->session->flashdata('msg');?></p>
+        <p><?php echo isset($msg) ? $msg : ''; ?></p>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

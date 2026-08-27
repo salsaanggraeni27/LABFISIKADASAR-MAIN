@@ -64,7 +64,7 @@
                     </button>
                     <a href="<?php echo site_url('');?>" class="navbar-brand nav-brand2"><img class="img img-responsive" width="250px;" src="<?php echo base_url().'theme/images/logo-biru.png'?>"></a>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                                                                        <ul class="navbar-nav">
+                        <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo site_url('home');?>"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
                             </li>
@@ -83,6 +83,7 @@
                                             <a href="<?php echo site_url('nilai');?>">Nilai Praktikum</a>
                                             <a href="<?php echo site_url('modul');?>">Modul Praktikum</a>
                                             <a href="<?php echo site_url('perizinan');?>">Perizinan Praktikum</a>
+                                            <a href="<?php echo site_url('peminjaman');?>">Peminjaman Alat Praktikum</a>
                                         </div>
                                     </li>
                                 </div>
@@ -372,17 +373,17 @@
                 <h2>Misi</h2>
                 <p>Mengacu pada ketentuan yang berlaku di itenas, misi laboratorium Fisika Dasar  Itenas adalah sebagai berikut : </p>
                 <p>
-                    •	Melaksanakan pelayanan prima kegiatan praktikum fisika dasar yang didukung oleh sumber daya yang memadai
+                    •   Melaksanakan pelayanan prima kegiatan praktikum fisika dasar yang didukung oleh sumber daya yang memadai
                 </p>
-                <p>                    •	Meningkatkan branding dan nama laboratorium itenas dengan memaksimalkan akun media sosial sebagai salah satu media pembelajaran.
+                <p>                    •    Meningkatkan branding dan nama laboratorium itenas dengan memaksimalkan akun media sosial sebagai salah satu media pembelajaran.
                 </p>
-                <p>                    •	Melaksanakan kegiatan pengembangan dan penguatan sumber daya melalui kegiatan bonding asisten minimal 2x dalam setahun.
+                <p>                    •    Melaksanakan kegiatan pengembangan dan penguatan sumber daya melalui kegiatan bonding asisten minimal 2x dalam setahun.
                 </p>
-                <p>                    •	Melaksanakan evaluasi rutin guna menjaga kualitas dan kuantitas pengajaran Laboratorium Fisika dasar Itenas.
+                <p>                    •    Melaksanakan evaluasi rutin guna menjaga kualitas dan kuantitas pengajaran Laboratorium Fisika dasar Itenas.
                 </p>
-                <p>                    •	Melaksanakan tes alat yang dilakukan pada akhir semester pembelajaran.
+                <p>                    •    Melaksanakan tes alat yang dilakukan pada akhir semester pembelajaran.
                 </p>
-                <p>                    •	Melaksanakan pengecekan alat keseluruhan secara rutin minimal satu bulan sekali.
+                <p>                    •    Melaksanakan pengecekan alat keseluruhan secara rutin minimal satu bulan sekali.
                 </p>
             </div>
             <div class="col-md-5">

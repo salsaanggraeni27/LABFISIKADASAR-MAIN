@@ -21,7 +21,7 @@
 </head>
 <body class="hold-transition login-page">
 
-<a href="javascript:void(0)" onclick="history.back()" class="btn-back-page">
+<a href="<?php echo site_url('admin/login'); ?>" class="btn-back-page">
     <i class="fa fa-arrow-left"></i> Kembali
 </a>
 

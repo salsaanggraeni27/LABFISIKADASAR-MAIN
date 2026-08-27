@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Lab. Fisika Dasar Itenas - Pengumuman</title>
+    <title>Lab. Fisika Dasar Itenas - Peminjaman Alat Praktikum</title>
     <link rel="shorcut icon" href="<?php echo base_url().'theme/images/icon.png'?>">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/bootstrap.min.css'?>">
@@ -15,23 +15,25 @@
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/font-awesome.min.css'?>">
     <!-- Simple Line Font -->
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/simple-line-icons.css'?>">
-    <!-- Calendar Css -->
-    <link rel="stylesheet" href="<?php echo base_url().'theme/css/fullcalendar.min.css'?>" />
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="<?php echo base_url().'theme/css/owl.carousel.min.css'?>">
     <!-- Main CSS -->
     <link href="<?php echo base_url().'theme/css/style.css'?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="<?php echo base_url().'theme/css/dataTables.bootstrap4.min.css'?>" rel="stylesheet">
+    <style>
+        .keterangan{
+            color: #FFFFFF;
+        }
+    </style>
 </head>
 
 <body class="content-animated">
-
-
 <!-- PRELOADER
 ==================================================-->
 <div class="page-loader">
     <div class="loader-area"></div>
-    <div class="loader font-face1">loading...
-    </div>
+    <div class="loader font-face1">loading...</div>
 </div>
 <!--============================= HEADER =============================-->
 <marquee class="header-topbar">
@@ -40,12 +42,12 @@
             <div class="col-xs-6 col-sm-8 col-md-9">
                 <div class="header-top_address">
                     <div class="header-top_list">
-                        Halaman Pengumuman Praktikum Laboratorium Fisika Dasar Itenas
+                        Halaman Peminjaman Alat Praktikum Laboratorium Fisika Dasar Itenas
                     </div>
                 </div>
-
             </div>
         </div>
+    </div>
 </marquee>
 <div data-toggle="affix" style="background-color: #FFFFFF;">
     <div class="container nav-menu2">
@@ -57,7 +59,7 @@
                     </button>
                     <a href="<?php echo site_url('');?>" class="navbar-brand nav-brand2"><img class="img img-responsive" width="250px;" src="<?php echo base_url().'theme/images/logo-biru.png'?>"></a>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                                                                        <ul class="navbar-nav">
+                        <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo site_url('home');?>"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
                             </li>
@@ -132,61 +134,199 @@
         </div>
     </div>
 </div>
-<section>
-</section>
 <!--//END HEADER -->
-<!--============================= EVENTS =============================-->
-<section class="events">
+
+<section class="contact" style="padding-bottom: 80px;">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <h2 class="event-title">Pengumuman</h2>
+            <div class="col-md-12">
+                <div class="contact-title">
+                    <h2>Halaman Peminjaman Alat Praktikum</h2>
+                    <br>
+                    <h3 align="center" class="bold">Status Peminjaman</h3>
+                </div>
             </div>
-            <div class="col-md-8">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item nav-tab1">
-                        <a class="nav-link tab-list active" data-toggle="tab" href="#upcoming-events" role="tab">Pengumuman Terbaru </a>
-                    </li>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="example1">
+                        <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>NRP</th>
+                            <th>Nama</th>
+                            <th>Jurusan</th>
+                            <th>Kel. Kecil</th>
+                            <th>Kel. Besar</th>
+                            <th>Kelas</th>
+                            <th>Hari/Jam</th>
+                            <th>Alat Dipinjam</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $no=1;
+                        foreach ($data_peminjaman->result() as $row):
+                            ?>
+                            <tr>
+                                <td><?php echo $no++;?></td>
+                                <td><?php echo $row->nrp;?></td>
+                                <td><?php echo $row->nama;?></td>
+                                <td><?php echo $row->jurusan;?></td>
+                                <td><?php echo $row->kelompok_kecil;?></td>
+                                <td><?php echo $row->kelompok_besar;?></td>
+                                <td><?php echo $row->kelas;?></td>
+                                <td><?php echo $row->hari_jam;?></td>
+                                
+                                <!-- FORM UNTUK USER KONFIRMASI KONDISI ALAT -->
+                                <td>
+                                    <strong><?php echo $row->nama_alat;?></strong>
+                                    
+                                    <?php if($row->status == 0): ?>
+                                        <!-- Jika status masih dipinjam, munculkan form -->
+                                        <form action="<?php echo site_url('peminjaman/kembalikan');?>" method="post" style="margin-top: 10px; background: #f8f9fa; padding: 10px; border-radius: 5px;">
+                                            <input type="hidden" name="xid_peminjaman" value="<?php echo $row->id_peminjaman; ?>">
+                                            <select name="xkondisi" class="form-control" style="font-size: 13px; height: 30px; margin-bottom: 5px;" required>
+                                                <option value="">-- Keterangan Alat --</option>
+                                                <option value="Aman">Aman (Lengkap)</option>
+                                                <option value="Rusak/Hilang">Rusak/Hilang</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-primary btn-sm btn-block" style="font-size: 12px; padding: 3px;">Kirim Pengembalian</button>
+                                        </form>
+                                    <?php elseif($row->status == 1): ?>
+                                        <!-- Jika user sudah mengisi, tampilkan keterangannya -->
+                                        <br><span style="font-size: 13px; color: #ff9800;"><strong>Keterangan:</strong> <?php echo $row->kondisi; ?> (Menunggu Konfirmasi)</span>
+                                    <?php else: ?>
+                                        <!-- Jika admin sudah ACC, tampilkan kondisi akhirnya -->
+                                        <br><span style="font-size: 13px; color: #4caf50;"><strong>Kondisi Akhir:</strong> <?php echo $row->kondisi; ?></span>
+                                    <?php endif; ?>
+                                </td>
 
-                </ul>
+                                <td>
+                                    <?php if ($row->status == 0) {
+                                        echo "<span class='badge badge-danger'>Dipinjam</span>";
+                                    } elseif ($row->status == 1) {
+                                        echo "<span class='badge badge-warning'>Menunggu Admin</span>";
+                                    } else {
+                                        echo "<span class='badge badge-success'>Selesai</span>";
+                                    } ?>
+                                </td>
+                            </tr>
+                        <?php endforeach;?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <br>
+        <br>
+        
         <div class="row">
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane active" id="upcoming-events" role="tabpanel">
-                    <?php foreach($data->result() as $row):?>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="event-date">
-                                        <h4><?php echo date("d", strtotime($row->pengumuman_tanggal));?></h4> <span><?php echo date("M Y", strtotime($row->pengumuman_tanggal));?></span>
+            <div class="col-md-12">
+                <div class="contact-form" style="margin-bottom: 30px;">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 contact-option">
+                            <div class="contact-option_rsp contact-address" style="margin-bottom: 20px;">
+                                <h3>Form Peminjaman Alat</h3>
+                                
+                                <form class="form-horizontal" action="<?php echo base_url().'Peminjaman/simpan_peminjaman'?>" method="post">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="NRP" name="xnrp" required>
                                     </div>
-                                    <span class="event-time"><?php echo date("H:i", strtotime($row->pengumuman_tanggal)).' WIB';?></span>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="NAMA" name="xnama" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="JURUSAN" name="xjurusan" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="KELOMPOK KECIL (Contoh: A31-1414)" name="xkelompok_kecil" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="KELOMPOK BESAR (Contoh: TKB04)" name="xkelompok_besar" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="KELAS" name="xkelas" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="HARI/JAM (Contoh: Rabu Pagi/08.00-12.00)" name="xhari_jam" required>
+                                    </div>
+
+                                    <h4 class="mt-4 mb-3" style="color: #fff;">Pilih Alat yang Dipinjam</h4>
+                                    <div style="background: #fff; padding: 15px; border-radius: 5px; color: #333; max-height: 300px; overflow-y: auto; width: 100%;">
+                                        <table class="table table-bordered table-sm" style="width: 100%;">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th>Nama Alat</th>
+                                                    <th class="text-center" style="width: 20%;">Tersedia</th>
+                                                    <th style="width: 35%;">Jumlah</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($data_alat->result() as $alat): ?>
+                                                <tr>
+                                                    <td>
+                                                        <?php echo $alat->nama_alat; ?>
+                                                        <input type="hidden" name="xid_alat[]" value="<?php echo $alat->id_alat; ?>">
+                                                        <input type="hidden" name="xnama_alat[]" value="<?php echo $alat->nama_alat; ?>">
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?php 
+                                                            if($alat->stok_tersedia > 0){
+                                                                echo "<span class='badge badge-success'>".$alat->stok_tersedia."</span>";
+                                                            } else {
+                                                                echo "<span class='badge badge-danger'>Habis</span>";
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control form-control-sm" name="xjumlah_pinjam[]" min="0" max="<?php echo $alat->stok_tersedia; ?>" value="0" <?php echo ($alat->stok_tersedia == 0) ? 'disabled' : ''; ?>>
+                                                    </td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <br>
+                                    <button type="submit" class="btn btn-default btn-submit">KONFIRMASI PEMINJAMAN</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-6">
+                            <div class="contact-address" style="margin-bottom: 20px;">
+                                <h3>Panduan Peminjaman Alat</h3>
+                                <br>
+                                <div class="contact-details">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    <h6>Input Data</h6>
+                                    <p>Pastikan identitas NRP, Nama, dan Kelompok diisi sesuai dengan data praktikan yang bertugas melakukan peminjaman.</p>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="event-heading">
-                                        <h3><?php echo $row->pengumuman_judul;?></h3>
-                                        <p><?php echo $row->pengumuman_deskripsi;?></p>
-                                    </div>
+                                <br>
+                                <div class="contact-details">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    <h6>Input Nama Alat Dinamis</h6>
+                                    <p>List alat di atas diambil langsung dari stok ketersediaan admin. Cukup ubah angka 0 menjadi jumlah alat yang ingin dipinjam. Stok akan otomatis berkurang.</p>
+                                </div>
+                                <br>
+                                <div class="contact-details">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    <h6>Konfirmasi Pengembalian</h6>
+                                    <p>Jika praktikum selesai, asisten WAJIB melapor ke Admin agar status diubah menjadi "Selesai" dan stok alat kembali bertambah ke jumlah semula.</p>
                                 </div>
                             </div>
-                            <hr class="event-underline">
                         </div>
-                    <?php endforeach;?>
-
-                    <div class="col-md-12 text-center">
-                        <?php echo $page;?>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
-<!--//END EVENTS -->
+
 <!--============================= FOOTER =============================-->
 <footer>
     <div class="container">
@@ -196,7 +336,7 @@
                     <a href="<?php echo site_url();?>">
                         <img src="<?php echo base_url().'theme/images/logo-white2.png'?>" class="img-fluid" alt="footer_logo">
                     </a>
-                    <p><?php echo date('Y');?> © copyright by <br><a  target="_blank">Divisi Media & Informasi</a><br>Laboratorium Fisika Dasar Itenas <br>All rights reserved.</p>
+                    <p><?php echo date('Y');?> © copyright by <br><a target="_blank">Divisi Media & Informasi</a><br>Laboratorium Fisika Dasar Itenas <br>All rights reserved.</p>
                 </div>
             </div>
             <div class="col-md-3">
@@ -204,7 +344,6 @@
                     <h3>Menu Utama</h3>
                     <ul>
                         <li><a href="<?php echo site_url();?>">Home</a></li>
-
                         <li><a href="<?php echo site_url('artikel');?>">Blog </a></li>
                         <li><a href="<?php echo site_url('galeri');?>">Gallery</a></li>
                         <li><a href="<?php echo site_url('alumni');?>">Alumni</a></li>
@@ -240,7 +379,8 @@
     </div>
 </footer>
 <!--//END FOOTER -->
-<!-- jQuery, Bootstrap JS. -->
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="<?php echo base_url('tema/js/jquery-2.2.4.min.js')?>"></script>
 <script src="<?php echo base_url('tema/js/jquery.easing.min.js')?>"></script>
 <script src="<?php echo base_url('tema/js/bootstrap.min.js')?>"></script>
@@ -263,16 +403,19 @@
 <script src="<?php echo base_url().'theme/js/jquery.min.js'?>"></script>
 <script src="<?php echo base_url().'theme/js/tether.min.js'?>"></script>
 <script src="<?php echo base_url().'theme/js/bootstrap.min.js'?>"></script>
-<!-- Plugins -->
-<script src="<?php echo base_url().'theme/js/moment.min.js'?>"></script>
-<script src="<?php echo base_url().'theme/js/fullcalendar.min.js'?>"></script>
 <script src="<?php echo base_url().'theme/js/owl.carousel.min.js'?>"></script>
 <script src="<?php echo base_url().'theme/js/validate.js'?>"></script>
 <script src="<?php echo base_url().'theme/js/tweetie.min.js'?>"></script>
-<!-- Subscribe -->
 <script src="<?php echo base_url().'theme/js/subscribe.js'?>"></script>
-<!-- Script JS -->
+<script src="<?php echo base_url().'theme/js/contact.js'?>"></script>
 <script src="<?php echo base_url().'theme/js/script.js'?>"></script>
-</body>
+<script src="<?php echo base_url().'theme/js/jquery.dataTables.min.js'?>"></script>
+<script src="<?php echo base_url().'theme/js/dataTables.bootstrap4.min.js'?>"></script>
 
+<script>
+    $(document).ready(function () {
+        $("#example1").DataTable();
+    });
+</script>
+</body>
 </html>

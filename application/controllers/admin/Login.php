@@ -9,7 +9,9 @@ class Login extends CI_Controller{
         $this->load->model('m_pengguna');
     }
     function index(){
-        $this->load->view('admin/v_login');
+        $data['msg'] = $this->session->flashdata('msg');
+        $this->session->unset_userdata('msg');
+        $this->load->view('admin/v_login', $data);
     }
     function register(){
         $this->load->view('admin/v_register');

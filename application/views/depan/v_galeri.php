@@ -81,6 +81,7 @@
                                             <a href="<?php echo site_url('nilai');?>">Nilai Praktikum</a>
                                             <a href="<?php echo site_url('modul');?>">Modul Praktikum</a>
                                             <a href="<?php echo site_url('perizinan');?>">Perizinan Praktikum</a>
+                                            <a href="<?php echo site_url('peminjaman');?>">Peminjaman Alat Praktikum</a>
                                         </div>
                                     </li>
                                 </div>

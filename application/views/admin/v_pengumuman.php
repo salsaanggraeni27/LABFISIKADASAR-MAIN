@@ -158,6 +158,8 @@ $jum_perizinan=$query3->num_rows();
                         <li><a href="<?php echo base_url().'admin/jadwal'?>"><i class="fa fa-calendar"></i>Jadwal Praktikum</a></li>
                         <li><a href="<?php echo base_url().'admin/nilai'?>"><i class="fa fa-star-o"></i> Data Nilai</a></li>
                         <li><a href="<?php echo base_url().'admin/modul'?>"><i class="fa fa-book"></i>Modul & LJK Praktikum</a></li>
+                        <li><a href="<?php echo base_url().'admin/alat'?>"><i class="fa fa-wrench"></i>Alat Praktikum</a></li>
+                        <li><a href="<?php echo base_url().'admin/peminjaman'?>"><i class="fa fa-exchange"></i>Peminjaman Alat</a></li>
                     </ul>
                 </li>
 
