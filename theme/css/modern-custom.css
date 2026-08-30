@@ -13,11 +13,14 @@ body, p, a, h1, h2, h3, h4, h5, h6, span, li, button, input, textarea, select, t
 /* Base Body background & smooth scroll */
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 body {
     background-color: #f8fafc;
     color: #334155;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Top bar (Marquee) styling */
@@ -55,13 +58,16 @@ div[data-toggle="affix"] {
 }
 
 .nav-menu2 {
-    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 30px !important;
 }
 
 /* Nav Brand */
 .nav-brand2 img {
-    max-height: 48px;
+    max-height: 42px;
     width: auto !important;
+    max-width: 210px;
     transition: transform 0.3s ease;
 }
 .nav-brand2:hover img {
@@ -71,21 +77,23 @@ div[data-toggle="affix"] {
 /* Nav Items */
 .navbar-nav {
     align-items: center;
+    flex-wrap: nowrap;
 }
 .nav-link {
     color: #334155 !important;
     font-weight: 600 !important;
-    font-size: 14px !important;
-    padding: 8px 16px !important;
-    margin: 0 4px;
+    font-size: 13.5px !important;
+    padding: 7px 11px !important;
+    margin: 0 2px;
     border-radius: 8px;
     transition: all 0.25s ease !important;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
+    white-space: nowrap;
 }
 .nav-link i {
-    font-size: 16px;
+    font-size: 15px;
     opacity: 0.8;
 }
 .nav-link:hover {
@@ -95,6 +103,44 @@ div[data-toggle="affix"] {
 .nav-item.active .nav-link {
     color: #f97316 !important;
     background-color: rgba(249, 115, 22, 0.08) !important;
+}
+
+@media (max-width: 1250px) {
+    .nav-menu2 {
+        padding: 0 15px !important;
+    }
+    .nav-brand2 img {
+        max-height: 36px;
+        max-width: 170px;
+    }
+    .nav-link {
+        font-size: 12px !important;
+        padding: 6px 7px !important;
+        margin: 0 1px !important;
+        gap: 3px !important;
+    }
+    .nav-link i {
+        font-size: 13px !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        margin-top: 10px;
+    }
+    .navbar-nav {
+        align-items: stretch !important;
+        flex-direction: column !important;
+    }
+    .nav-link {
+        padding: 10px 15px !important;
+        margin: 3px 0 !important;
+        font-size: 14px !important;
+    }
 }
 
 /* Dropdown Menu styling */
@@ -156,27 +202,43 @@ div[data-toggle="affix"] {
 .carousel-item img {
     filter: brightness(0.65) contrast(1.05);
 }
+.carousel-caption {
+    left: 10% !important;
+    right: 10% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
 .slider_title {
-    max-width: 800px;
-    padding: 40px;
-    background: rgba(15, 23, 42, 0.45);
-    backdrop-filter: blur(8px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 80px;
+    max-width: 850px !important;
+    width: 100% !important;
+    margin: 0 auto 60px auto !important;
+    padding: 35px 30px !important;
+    background: rgba(15, 23, 42, 0.55) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+    text-align: center !important;
 }
 .slider_title h1 {
     font-size: 42px !important;
     font-weight: 800 !important;
     color: #ffffff !important;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    margin-bottom: 15px;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+    margin-bottom: 15px !important;
+    text-align: center !important;
 }
 .slider_title h4 {
     font-size: 18px !important;
     line-height: 1.7 !important;
     color: #f1f5f9 !important;
     font-weight: 400 !important;
+    text-align: center !important;
+    margin: 0 auto !important;
 }
 
 /* Testimonial Section */
@@ -410,8 +472,11 @@ div[data-toggle="affix"] {
     border-radius: 16px;
     background: #ffffff;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-    overflow: hidden;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
     padding: 10px;
+    width: 100% !important;
+    max-width: 100% !important;
 }
 .table {
     margin-bottom: 0 !important;
