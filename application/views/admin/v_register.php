@@ -57,9 +57,9 @@
             </div>
 
             <div class="form-group has-feedback">
-                <input type="email" name="email" class="form-control" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@mhs\.itenas\.ac\.id" title="Wajib menggunakan email mahasiswa" required>
+                <input type="email" name="email" class="form-control" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@(mhs\.)?itenas\.ac\.id" title="Wajib menggunakan email @mhs.itenas.ac.id atau @itenas.ac.id" required>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                <span class="help-block" style="font-size: 11px; color: #737373; margin-top: 5px;">* Wajib menggunakan email mahasiswa</span>
+                <span class="help-block" style="font-size: 11px; color: #737373; margin-top: 5px;">* Wajib menggunakan email @mhs.itenas.ac.id atau @itenas.ac.id</span>
             </div>
 
             <div class="form-group has-feedback">
@@ -68,9 +68,9 @@
             </div>
 
             <div class="form-group has-feedback">
-                <input type="text" name="username" class="form-control" placeholder="Username" pattern="[0-9\-]+" title="Username wajib menggunakan NRP Mahasiswa (angka)" required>
+                <input type="text" name="username" class="form-control" placeholder="NRP Mahasiswa / NIP Dosen" pattern="[0-9\-\.]+" title="Username wajib menggunakan NRP Mahasiswa atau NIP Dosen (angka)" required>
                 <span class="glyphicon glyphicon-tag form-control-feedback"></span>
-                <span class="help-block" style="font-size: 11px; color: #737373; margin-top: 5px;">* Username wajib menggunakan NRP Mahasiswa</span>
+                <span class="help-block" style="font-size: 11px; color: #737373; margin-top: 5px;">* Username wajib menggunakan NRP Mahasiswa atau NIP Dosen</span>
             </div>
 
             <div class="form-group has-feedback">
