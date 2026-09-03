@@ -21,6 +21,10 @@ $jum_perizinan=$query3->num_rows();
     <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/datatables/dataTables.bootstrap.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/AdminLTE.min.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/skins/_all-skins.min.css'?>">
+    <style>
+        .badge-waktu-pinjam { background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; padding: 4px 8px; border-radius: 4px; display: inline-block; font-size: 11px; font-weight: 600; }
+        .badge-waktu-kembali { background-color: #fffbe6; color: #d97706; border: 1px solid #ffe58f; padding: 4px 8px; border-radius: 4px; display: inline-block; font-size: 11px; font-weight: 600; }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -123,46 +127,92 @@ $jum_perizinan=$query3->num_rows();
                             <table id="example1" class="table table-striped" style="font-size:13px;">
                                 <thead>
                                     <tr>
-                                        <th>Waktu</th>
                                         <th>NRP - Nama</th>
-                                        <th>Kelompok</th>
+                                        <th>Jurusan / Kelompok</th>
                                         <th>Alat Dipinjam</th>
+                                        <th>Waktu Pinjam</th>
+                                        <th>Waktu Pengembalian</th>
                                         <th>Kondisi (User)</th>
                                         <th>Status</th>
                                         <th class="text-center">Aksi Admin</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($data->result_array() as $i) : ?>
+                                    <?php foreach ($data->result_array() as $i) : 
+                                        $waktu_pinjam  = $i['waktu_pinjam'];
+                                        $waktu_kembali = $i['waktu_kembali'];
+
+                                        // Format Waktu Pinjam
+                                        $tgl_pinjam = (!empty($waktu_pinjam) && $waktu_pinjam != '0000-00-00 00:00:00') 
+                                            ? date('d M Y, H:i', strtotime($waktu_pinjam)) . ' WIB' 
+                                            : '-';
+
+                                        // Format Waktu Pengembalian (Real-time saat User Klik Kirim Pengembalian)
+                                        $tgl_kembali = (!empty($waktu_kembali) && $waktu_kembali != '0000-00-00 00:00:00') 
+                                            ? date('d M Y, H:i', strtotime($waktu_kembali)) . ' WIB' 
+                                            : '-';
+                                    ?>
                                     <tr>
-                                        <td><?php echo $i['hari_jam'];?></td>
                                         <td><b><?php echo $i['nrp'];?></b><br><?php echo $i['nama'];?></td>
-                                        <td><?php echo $i['kelompok_kecil'];?> - <?php echo $i['kelompok_besar'];?></td>
-                                        <td><?php echo $i['nama_alat'];?></td>
+                                        <td>
+                                            <span class="label bg-gray" style="font-size:11px; color:#333;"><?php echo $i['jurusan'];?></span><br>
+                                            <small>Klp: <b><?php echo $i['kelompok_kecil'];?> / <?php echo $i['kelompok_besar'];?></b> (Kls <?php echo $i['kelas'];?>)</small><br>
+                                            <small class="text-muted"><i class="fa fa-calendar"></i> <?php echo $i['hari_jam'];?></small>
+                                        </td>
+                                        <td><b><?php echo $i['nama_alat'];?></b></td>
+                                        
+                                        <!-- WAKTU DIAJUKAN PEMINJAMAN -->
+                                        <td>
+                                            <span class="badge-waktu-pinjam">
+                                                <i class="fa fa-clock-o"></i> <?php echo $tgl_pinjam; ?>
+                                            </span>
+                                        </td>
+
+                                        <!-- WAKTU REAL-TIME USER MENGAJUKAN PENGEMBALIAN -->
+                                        <td>
+                                            <?php if(!empty($waktu_kembali) && $waktu_kembali != '0000-00-00 00:00:00'): ?>
+                                                <span class="badge-waktu-kembali">
+                                                    <i class="fa fa-paper-plane"></i> <?php echo $tgl_kembali; ?>
+                                                </span>
+                                            <?php else: ?>
+                                                <span class="label bg-gray" style="color: #64748b;">Belum Dikembalikan</span>
+                                            <?php endif; ?>
+                                        </td>
+
                                         <td>
                                             <?php 
-                                                if($i['kondisi'] == 'Aman') echo "<span class='text-green'><b>AMAN</b></span>";
-                                                else if($i['kondisi'] == 'Rusak/Hilang') echo "<span class='text-red'><b>RUSAK/HILANG</b></span>";
+                                                if(!empty($i['kondisi'])) echo "<b>".$i['kondisi']."</b>";
                                                 else echo "-";
                                             ?>
                                         </td>
                                         <td>
                                             <?php if ($i['status'] == 0) {
-                                                echo "<span class='label bg-red'>Dipinjam</span>";
+                                                echo "<span class='label bg-blue'>Menunggu ACC Pinjam</span>";
                                             } elseif ($i['status'] == 1) {
-                                                echo "<span class='label bg-yellow'>Menunggu ACC</span>";
+                                                echo "<span class='label bg-yellow'>Dipinjam / Belum Dikembalikan</span>";
+                                            } elseif ($i['status'] == 2) {
+                                                echo "<span class='label bg-orange'>Menunggu ACC Kembali</span>";
                                             } else {
                                                 echo "<span class='label bg-green'>Selesai</span>";
                                             } ?>
                                         </td>
                                         <td style="text-align:center;">
-                                            <?php if($i['status'] == 1): ?>
-                                                <form action="<?php echo site_url('admin/peminjaman/konfirmasi');?>" method="post" onsubmit="return confirm('Konfirmasi pengembalian ini? Stok akan otomatis diperbarui sesuai kondisi.');" style="display:inline;">
+                                            <?php if($i['status'] == 0): ?>
+                                                <form action="<?php echo site_url('admin/peminjaman/konfirmasi_pinjam');?>" method="post" onsubmit="return confirm('ACC Peminjaman ini? Kolom Dipinjam akan bertambah dan Stok akan berkurang.');" style="display:inline;">
                                                     <input type="hidden" name="xid" value="<?php echo $i['id_peminjaman'];?>">
-                                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Konfirmasi</button>
+                                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-check"></i> ACC Pinjam</button>
                                                 </form>
+
+                                            <?php elseif($i['status'] == 1): ?>
+                                                <span class="text-muted"><i class="fa fa-clock-o"></i> Menunggu User</span>
+
                                             <?php elseif($i['status'] == 2): ?>
-                                                <!-- Tombol Hapus hanya muncul kalau sudah Selesai -->
+                                                <form action="<?php echo site_url('admin/peminjaman/konfirmasi');?>" method="post" onsubmit="return confirm('Konfirmasi pengembalian ini? Stok/Rusak akan otomatis diperbarui.');" style="display:inline;">
+                                                    <input type="hidden" name="xid" value="<?php echo $i['id_peminjaman'];?>">
+                                                    <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-check"></i> ACC Kembali</button>
+                                                </form>
+
+                                            <?php elseif($i['status'] == 3): ?>
                                                 <a class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ModalHapus<?php echo $i['id_peminjaman'];?>"><span class="fa fa-trash"></span> Hapus</a>
                                             <?php endif; ?>
                                         </td>
