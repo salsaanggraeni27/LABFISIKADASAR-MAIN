@@ -748,50 +748,66 @@ $jum_perizinan=$query3->num_rows();
 <?php if($this->session->flashdata('msg')=='error'):?>
     <script type="text/javascript">
         $.toast({
-            heading: 'Error',
-            text: "Password dan Ulangi Password yang Anda masukan tidak sama.",
-            showHideTransition: 'slide',
+            heading: 'Gagal',
+            text: "Terjadi kesalahan saat memproses data asisten.",
+            showHideTransition: 'fade',
             icon: 'error',
-            hideAfter: false,
-            position: 'bottom-right',
-            bgColor: '#FF4859'
+            hideAfter: 7000,
+            position: 'mid-center',
+            textAlign: 'center',
+            bgColor: '#e5484d'
         });
     </script>
-
+<?php elseif($this->session->flashdata('msg')=='warning'):?>
+    <script type="text/javascript">
+        $.toast({
+            heading: 'Gagal',
+            text: "Gagal menyimpan karena format atau ukuran file foto tidak sesuai.",
+            showHideTransition: 'fade',
+            icon: 'warning',
+            hideAfter: 7000,
+            position: 'mid-center',
+            textAlign: 'center',
+            bgColor: '#f59e0b'
+        });
+    </script>
 <?php elseif($this->session->flashdata('msg')=='success'):?>
     <script type="text/javascript">
         $.toast({
             heading: 'Success',
-            text: "Asisten Berhasil disimpan ke database.",
-            showHideTransition: 'slide',
+            text: "Data asisten berhasil disimpan ke database.",
+            showHideTransition: 'fade',
             icon: 'success',
-            hideAfter: false,
-            position: 'bottom-right',
-            bgColor: '#7EC857'
+            hideAfter: 7000,
+            position: 'mid-center',
+            textAlign: 'center',
+            bgColor: '#10b981'
         });
     </script>
 <?php elseif($this->session->flashdata('msg')=='info'):?>
     <script type="text/javascript">
         $.toast({
-            heading: 'Info',
-            text: "Asisten berhasil di update",
-            showHideTransition: 'slide',
+            heading: 'Success',
+            text: "Data asisten berhasil diperbarui.",
+            showHideTransition: 'fade',
             icon: 'info',
-            hideAfter: false,
-            position: 'bottom-right',
-            bgColor: '#00C9E6'
+            hideAfter: 7000,
+            position: 'mid-center',
+            textAlign: 'center',
+            bgColor: '#3b82f6'
         });
     </script>
 <?php elseif($this->session->flashdata('msg')=='success-hapus'):?>
     <script type="text/javascript">
         $.toast({
             heading: 'Success',
-            text: "Asisten Berhasil dihapus.",
-            showHideTransition: 'slide',
+            text: "Data asisten berhasil dihapus.",
+            showHideTransition: 'fade',
             icon: 'success',
-            hideAfter: false,
-            position: 'bottom-right',
-            bgColor: '#7EC857'
+            hideAfter: 7000,
+            position: 'mid-center',
+            textAlign: 'center',
+            bgColor: '#10b981'
         });
     </script>
 <?php else:?>
