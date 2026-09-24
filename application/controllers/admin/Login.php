@@ -31,16 +31,17 @@ class Login extends CI_Controller{
             redirect('admin/login/register');
         }
 
-        // Validate username (must be numeric NRP Mahasiswa)
-        $clean_nrp = str_replace(['-', ' '], '', trim($username));
-        if (!is_numeric($clean_nrp) || strlen($clean_nrp) < 6) {
-            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert"><span class="fa fa-close"></span></button> Registrasi gagal. Username wajib menggunakan NRP Mahasiswa (berupa angka)!</div>');
+        // Validate username (must be numeric NRP Mahasiswa / NIP Dosen)
+        $clean_username = str_replace(['-', ' ', '.'], '', trim($username));
+        if (!is_numeric($clean_username) || strlen($clean_username) < 4) {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert"><span class="fa fa-close"></span></button> Registrasi gagal. Username wajib menggunakan NRP Mahasiswa atau NIP Dosen (berupa angka)!</div>');
             redirect('admin/login/register');
         }
 
-        // Validate email domain (@mhs.itenas.ac.id)
-        if (strtolower(substr(trim($email), -17)) !== '@mhs.itenas.ac.id') {
-            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert"><span class="fa fa-close"></span></button> Registrasi gagal. Wajib menggunakan email mahasiswa (@mhs.itenas.ac.id)</div>');
+        // Validate email domain (@mhs.itenas.ac.id or @itenas.ac.id)
+        $email_clean = strtolower(trim($email));
+        if (substr($email_clean, -17) !== '@mhs.itenas.ac.id' && substr($email_clean, -13) !== '@itenas.ac.id') {
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert"><span class="fa fa-close"></span></button> Registrasi gagal. Wajib menggunakan email Itenas (@mhs.itenas.ac.id atau @itenas.ac.id)</div>');
             redirect('admin/login/register');
         }
 
@@ -52,7 +53,7 @@ class Login extends CI_Controller{
         // Check duplicate username
         $check_user = $this->db->query("SELECT * FROM tbl_pengguna WHERE pengguna_username='$username'");
         if ($check_user->num_rows() > 0) {
-            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert"><span class="fa fa-close"></span></button> NRP / Username sudah terdaftar!</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert"><span class="fa fa-close"></span></button> NRP / NIP / Username sudah terdaftar!</div>');
             redirect('admin/login/register');
         }
 

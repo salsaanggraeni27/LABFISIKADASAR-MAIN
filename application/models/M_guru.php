@@ -7,11 +7,11 @@ class M_guru extends CI_Model{
     }
 
     function simpan_guru($nip,$nama,$jenkel,$tmp_lahir,$tgl_lahir,$wa,$email,$photo){
-        $hsl=$this->db->query("INSERT INTO tbl_guru (guru_nip,guru_nama,guru_jenkel,guru_tmp_lahir,guru_tgl_lahir,guru_wa,guru_email,guru_photo) VALUES ('$nip','$nama','$jenkel','$tmp_lahir','$tgl_lahir','$wa','$email','$photo')");
+        $hsl=$this->db->query("INSERT INTO tbl_guru (guru_nip,guru_nama,guru_jenkel,guru_tmp_lahir,guru_tgl_lahir,guru_wa,guru_email,guru_photo,guru_status,guru_hp,guru_mail,guru_jurusan,guru_angkatan) VALUES ('$nip','$nama','$jenkel','$tmp_lahir','$tgl_lahir','$wa','$email','$photo','','','','','')");
         return $hsl;
     }
     function simpan_guru_tanpa_img($nip,$nama,$jenkel,$tmp_lahir,$tgl_lahir,$wa,$email){
-        $hsl=$this->db->query("INSERT INTO tbl_guru (guru_nip,guru_nama,guru_jenkel,guru_tmp_lahir,guru_tgl_lahir,guru_wa,guru_email) VALUES ('$nip','$nama','$jenkel','$tmp_lahir','$tgl_lahir','$wa','$email')");
+        $hsl=$this->db->query("INSERT INTO tbl_guru (guru_nip,guru_nama,guru_jenkel,guru_tmp_lahir,guru_tgl_lahir,guru_wa,guru_email,guru_photo,guru_status,guru_hp,guru_mail,guru_jurusan,guru_angkatan) VALUES ('$nip','$nama','$jenkel','$tmp_lahir','$tgl_lahir','$wa','$email','','','','','','')");
         return $hsl;
     }
 
